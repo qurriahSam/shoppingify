@@ -5,15 +5,12 @@ import logo from '../../assets/logo.svg';
 
 export default function SideNav() {
   return (
-    <ul className='menu bg-base-200 w-20 h-screen flex justify-between py-4'>
-      <Link to='/' className='hover:bg-base-200 no-focus active:bg-white'>
-        <img
-          id='imp'
-          src={logo}
-          className='no-focus focus:bg-base-200 hover:bg-base-200 active:bg-white'
-          alt='My Happy SVG'
-        />
-      </Link>
+    <ul className='menu bg-base-200 w-16 md:w-20 h-screen flex justify-between py-4'>
+      <li>
+        <Link to='/' className='no-focus hover:bg-inherit'>
+          <img src={logo} alt='logo' />
+        </Link>
+      </li>
       <span>
         <li>
           <Link to='/'>
