@@ -1,0 +1,7 @@
+.no-focus:focus {
+  background-color: inherit !important;
+}
+
+.no-focus:active {
+  background-color: inherit !important;
+}
