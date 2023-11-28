@@ -6,7 +6,7 @@ import logo from '../../assets/logo.svg';
 export default function SideNav() {
   return (
     <>
-      <ul className='menu bg-base-200 w-16 md:w-20 h-screen flex justify-between py-4'>
+      <ul className='menu w-16 md:w-20 h-screen flex justify-between py-4'>
         <li>
           <Link to='/' className='no-focus hover:bg-inherit'>
             <img src={logo} alt='logo' />
