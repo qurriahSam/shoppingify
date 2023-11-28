@@ -5,7 +5,9 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [require('daisyui')],
+
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  plugins: [require('daisyui'), require('tailwind-scrollbar')({ nocompatible: true })],
 
   daisyui: {
     themes: false, // false: only light + dark | true: all themes | array: specific themes like this ["light", "dark", "cupcake"]
