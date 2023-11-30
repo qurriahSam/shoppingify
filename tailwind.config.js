@@ -12,6 +12,12 @@ export default {
   daisyui: {
     themes: [
       {
+        dark: {
+          ...require('daisyui/src/theming/themes')['dark'],
+          primary: '#F9A109',
+        },
+      },
+      {
         light: {
           ...require('daisyui/src/theming/themes')['light'],
           primary: '#F9A109',
