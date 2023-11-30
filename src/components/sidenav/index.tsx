@@ -2,6 +2,7 @@ import './index.css';
 import { Link } from 'react-router-dom';
 
 import logo from '../../assets/logo.svg';
+import { ThemeChanger } from '../themeChanger';
 
 export default function SideNav() {
   return (
@@ -26,6 +27,7 @@ export default function SideNav() {
           </Link>
         </li>
       </ul>
+      <ThemeChanger />
       <div className='ps-2 md:ps-4'>
         <button className='btn btn-primary btn-circle shadow'>
           <a className='tooltip tooltip-right font-normal' data-tip='List'>
