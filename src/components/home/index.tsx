@@ -40,7 +40,7 @@ function Category({ categories }: { categories: Category }) {
 export default function Home() {
   return (
     <div>
-      <div className='md:flex items-center mb-8'>
+      <div className='lg:flex items-center mb-8'>
         <p className='mb-4 text-lg md:mb-0 md:text-2xl font-medium max-w-md'>
           <span className='text-primary'>Shoppingify</span> allows you take your shopping list
           wherever you go
