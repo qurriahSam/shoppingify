@@ -10,9 +10,16 @@ function ListHistory({ history }: { history: HistoryListTitle }) {
           <i className='material-icons'>event_note</i>
           <p className='p-1'>{history.date}</p>
         </span>
-        <div className='badge badge-accent badge-outline m-1 badge-sm lg:badge-md'>
-          {history.status}
-        </div>
+        {history.status === 'complete' ? (
+          <div className='badge badge-accent badge-outline m-1 badge-sm lg:badge-md'>
+            {history.status}
+          </div>
+        ) : (
+          <div className='badge badge-error badge-outline m-1 badge-sm lg:badge-md'>
+            {history.status}
+          </div>
+        )}
+
         <i className='material-icons text-neutral-600 font-sm'>chevron_right</i>
       </div>
     </button>
