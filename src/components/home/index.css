@@ -1,3 +1,8 @@
 .outlineR {
   outline: 0 !important;
 }
+
+.overflow-wrap {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
