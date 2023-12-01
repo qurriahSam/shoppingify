@@ -17,8 +17,8 @@ function Search() {
 
 function DisplayItem({ item }: { item: Item }) {
   return (
-    <button className='btn text-start font-normal flex w-fit p-2 m-2 rounded-lg shadow-lg text-sm bg-base-100'>
-      <p className='me-1 p-1'>{item.name}</p>
+    <button className='btn text-start font-normal flex h-fit w-28 md:w-32 p-2 m-2 rounded-lg shadow-lg text-sm bg-base-100'>
+      <p className='me-1 p-1 w-16 overflow-wrap text-xs md:text-sm'>{item.name}</p>
       <i className='material-icons text-sm text-neutral-600'>add</i>
     </button>
   );
