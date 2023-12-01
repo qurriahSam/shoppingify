@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.svg';
 import { ThemeChanger } from '../themeChanger';
 
-export default function SideNav() {
+type ToggleDrawer = () => void;
+
+export default function SideNav({ toggleDrawer }: { toggleDrawer: ToggleDrawer }) {
   return (
     <div className='w-16 md:w-20 h-screen flex flex-col justify-between py-4'>
       <Link to='/' className='ps-2 md:ps-4'>
@@ -29,7 +31,7 @@ export default function SideNav() {
       </ul>
       <ThemeChanger />
       <div className='ps-2 md:ps-4'>
-        <button className='btn btn-primary btn-circle shadow'>
+        <button className='btn btn-primary btn-circle shadow' onClick={toggleDrawer}>
           <a className='tooltip tooltip-right font-normal' data-tip='List'>
             <i className='material-icons'>shopping_cart</i>
           </a>
