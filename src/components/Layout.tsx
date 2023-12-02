@@ -24,7 +24,7 @@ export default function SiteWrapper({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div className='flex h-screen flex-row md:overflow-hidden'>
+    <div className='flex h-screen flex-row md:overflow-hidden 2xl:container 2xl:mx-auto'>
       <div>
         <SideNav toggleDrawer={drawerToggleFunc} />
       </div>
@@ -36,11 +36,15 @@ export default function SiteWrapper({ children }: { children: ReactNode }) {
         {children}
       </div>
       {isMobile ? (
-        <div className={drawerToggle ? 'w-full animate-in fade-in zoom-in' : 'hidden'}>
+        <div
+          className={
+            drawerToggle ? 'w-full animate-in slide-in-from-right-72 bg-base-200' : 'hidden'
+          }
+        >
           <Drawer />
         </div>
       ) : (
-        <div className='md:w-1/3 lg:w-1/4'>
+        <div className='md:w-1/3 lg:w-1/4 bg-base-100'>
           <Drawer />
         </div>
       )}
