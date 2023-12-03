@@ -4,14 +4,14 @@ export const listItems: Category[] = [
   {
     category: 'fruit and vegetables',
     items: [
-      { id: '1', name: 'Avocados' },
+      { id: '1', name: 'Avocado' },
       { id: '2', name: 'Bananas' },
       { id: '3', name: 'Cabbage' },
       { id: '4', name: 'skuma' },
       { id: '5', name: 'grapes' },
-      { id: '1', name: 'Avocados' },
+      { id: '1', name: 'Spaghetti 250g' },
       { id: '3', name: 'Cabbage' },
-      { id: '4', name: 'skuma' },
+      { id: '4', name: 'cucumber' },
       { id: '5', name: 'grapes' },
       { id: '2', name: 'Bananas' },
     ],
@@ -19,7 +19,7 @@ export const listItems: Category[] = [
   {
     category: 'Beverages',
     items: [
-      { id: '6', name: 'Soda' },
+      { id: '6', name: 'Soda Water 500ml' },
       { id: '7', name: 'Beer' },
       { id: '8', name: 'Water' },
       { id: '9', name: 'Wine' },
@@ -29,7 +29,7 @@ export const listItems: Category[] = [
   {
     category: 'Meat & Fish',
     items: [
-      { id: '1', name: 'Avocados' },
+      { id: '1', name: 'Avocado' },
       { id: '2', name: 'Bananas' },
       { id: '3', name: 'Cabbage' },
       { id: '4', name: 'skuma' },
@@ -44,7 +44,7 @@ export const listItems: Category[] = [
   {
     category: 'pets',
     items: [
-      { id: '1', name: 'Avocados' },
+      { id: '1', name: 'Avocado' },
       { id: '2', name: 'Bananas' },
       { id: '3', name: 'Cabbage' },
       { id: '4', name: 'skuma' },
