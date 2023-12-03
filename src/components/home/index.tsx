@@ -9,7 +9,7 @@ function Search() {
       <input
         type='text'
         placeholder='Search item'
-        className='input input-xs w-64 max-w-sm focus:border-0 outlineR focus-within:border-0'
+        className='input input-xs w-full focus:border-0 outlineR focus-within:border-0'
       />
     </div>
   );
