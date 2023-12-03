@@ -29,7 +29,7 @@ export default function SiteWrapper({ children }: { children: ReactNode }) {
         <SideNav toggleDrawer={drawerToggleFunc} />
       </div>
       <div
-        className={`px-6 md:px-12 py-8 md:w-2/3 lg:w-3/4 overflow-y-auto bg-base-200 scrollbar-thin scrollbar-thumb-stone-400 hover:scrollbar-thumb-stone-500 scrollbar-track-stone-300 ${
+        className={`px-6 md:px-9 py-8 md:w-2/3 lg:w-3/4 overflow-y-auto bg-base-200 scrollbar-thin scrollbar-thumb-stone-400 hover:scrollbar-thumb-stone-500 scrollbar-track-stone-300 ${
           !drawerToggle ? 'w-full' : 'hidden'
         }`}
       >
