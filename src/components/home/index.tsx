@@ -5,7 +5,7 @@ import { Item, Category } from '../../types/types';
 function Search() {
   return (
     <div className='flex h-fit p-1 rounded-lg shadow border bg-base-100 focus-within:border-primary'>
-      <i className='material-icons text-neutral-600'>search</i>
+      <i className='material-symbols-outlined text-neutral-600'>search</i>
       <input
         type='text'
         placeholder='Search item'
@@ -17,9 +17,9 @@ function Search() {
 
 function DisplayItem({ item }: { item: Item }) {
   return (
-    <button className='btn text-start font-normal flex h-fit w-28 md:w-32 p-2 m-2 rounded-lg shadow-lg text-sm bg-base-100'>
-      <p className='me-1 p-1 w-16 overflow-wrap text-xs md:text-sm'>{item.name}</p>
-      <i className='material-icons text-sm text-neutral-600'>add</i>
+    <button className='btn text-start font-normal flex h-fit w-28 md:w-32 p-1 m-2 rounded-lg shadow-lg text-sm bg-base-100'>
+      <p className='me-1 p-1 w-16 text-xs'>{item.name}</p>
+      <i className='material-symbols-outlined text-sm text-neutral-600'>add</i>
     </button>
   );
 }

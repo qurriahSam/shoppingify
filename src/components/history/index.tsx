@@ -7,7 +7,7 @@ function ListHistory({ history }: { history: HistoryListTitle }) {
       <p className='text-start me-1 p-1 md:col-span-2'>{history.name}</p>
       <div className='md:col-span-2 lg:col-span-1 flex justify-between text-xs text-start'>
         <span className='flex text-neutral-500'>
-          <i className='material-icons'>event_note</i>
+          <i className='material-symbols-outlined'>event_note</i>
           <p className='p-1'>{history.date}</p>
         </span>
         {history.status === 'complete' ? (
@@ -20,7 +20,7 @@ function ListHistory({ history }: { history: HistoryListTitle }) {
           </div>
         )}
 
-        <i className='material-icons text-neutral-600 font-sm'>chevron_right</i>
+        <i className='material-symbols-outlined text-neutral-600 font-sm'>chevron_right</i>
       </div>
     </button>
   );
