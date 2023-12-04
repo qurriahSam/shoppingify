@@ -20,7 +20,6 @@ export default function SiteWrapper({ children }: { children: ReactNode }) {
 
   function drawerToggleFunc() {
     setDrawerToggle(!drawerToggle);
-    console.log(drawerToggle);
   }
 
   return (
