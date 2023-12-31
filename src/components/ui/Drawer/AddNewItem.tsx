@@ -1,34 +1,28 @@
 import { ChangeEvent, useState } from 'react';
 
 interface INewItem {
-  _id: null | string;
+  _id: string;
   category: string;
   name: string;
-  image: null | string;
-  note: null | string;
+  image: string;
+  note: string;
 }
 
 export default function AddNewItem() {
   const [newItem, setNewItem] = useState<INewItem>({
-    _id: null,
+    _id: '',
     category: '',
     name: '',
-    image: null,
-    note: null,
+    image: '',
+    note: '',
   });
 
-  const updateNewItemInput = (e: ChangeEvent<HTMLInputElement>) => {
+  const updateNewItem = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const value = e.target.value;
     const key = e.target.id;
     setNewItem({ ...newItem, [key]: value });
-  };
-  const updateNewItemCategory = (e: ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value;
-    const key = e.target.id;
-
-    console.log(key, value);
-
-    //setNewItem({ ...newItem, category: value, _id: key });
   };
 
   return (
@@ -38,28 +32,32 @@ export default function AddNewItem() {
         <div>
           <div className='mb-4'>
             <label htmlFor='name' className='label-text text-xs font-medium'>
-              Name:
+              Name :
             </label>
             <input
               id='name'
               type='text'
               placeholder='Enter a name'
               className='input input-md placeholder:text-xs w-full border-2 border-base-300 focus:border-primary focus:outline-0 focus-within:outline-0'
+              onChange={updateNewItem}
+              value={newItem.name}
             />
           </div>
           <div className='mb-4'>
             <label htmlFor='note' className='label-text text-xs font-medium'>
-              Note (optional):
+              Note ( optional ) :
             </label>
             <textarea
               id='note'
               placeholder='Enter a note'
               className='textarea textarea-md placeholder:text-xs w-full border-2 border-base-300 focus:border-primary focus:outline-0 focus-within:outline-0'
+              onChange={updateNewItem}
+              value={newItem.note}
             />
           </div>
           <div className='mb-4'>
             <label htmlFor='image' className='label-text text-xs font-medium'>
-              Image (optional):
+              Image (optional) :
             </label>
             <input
               id='image'
@@ -74,7 +72,9 @@ export default function AddNewItem() {
             </label>
 
             <select
-              onChange={updateNewItemCategory}
+              id='category'
+              onChange={updateNewItem}
+              value={newItem.category}
               className='select select-md w-full text-xs max-w-xs border-2 border-base-300 focus:border-primary focus:outline-0 focus-within:outline-0'
             >
               <option disabled selected>
@@ -84,7 +84,6 @@ export default function AddNewItem() {
               <option>Marge</option>
               <option>Bart</option>
               <option>Lisa</option>
-              <option>New</option>
             </select>
           </div>
         </div>
