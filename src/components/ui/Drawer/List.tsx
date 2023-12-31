@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import wine from '../../../assets/source.svg';
-import CheckList from './checkList';
-import CreateList from './createList';
+import CheckList from './CheckList';
+import CreateList from './CreateList';
 
 function ListSave({ toggleEditMode }: { toggleEditMode: () => void }) {
   return (

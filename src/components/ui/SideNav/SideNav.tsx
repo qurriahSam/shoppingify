@@ -1,8 +1,8 @@
 import './index.css';
 import { Link } from 'react-router-dom';
 
-import logo from '../../assets/logo.svg';
-import { ThemeChanger } from '../themeChanger';
+import logo from '../../../assets/logo.svg';
+import { ThemeToggle } from './ThemeToggle';
 
 type ToggleDrawer = () => void;
 
@@ -29,7 +29,7 @@ export default function SideNav({ toggleDrawer }: { toggleDrawer: ToggleDrawer }
           </Link>
         </li>
       </ul>
-      <ThemeChanger />
+      <ThemeToggle />
       <div className='ps-2 md:ps-4'>
         <button className='btn btn-primary btn-circle shadow' onClick={toggleDrawer}>
           <a className='tooltip tooltip-right font-normal' data-tip='List'>

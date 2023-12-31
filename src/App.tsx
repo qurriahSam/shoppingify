@@ -2,10 +2,10 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 
 import SiteWrapper from './components/Layout';
-import Home from './components/home';
-import History from './components/history';
-import Stats from './components/stats';
-import HistShopList from './components/history/histShopList';
+import Home from './pages/Home/Home';
+import History from './pages/History/History';
+import Stats from './pages/Stats/Stats';
+import HistShopList from './components/ui/History/HistShopList';
 
 function App() {
   return (

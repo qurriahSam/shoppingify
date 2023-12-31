@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './drawer.css';
-import List from './list';
-import AddNewItem from './addNewItem';
+import List from '../../components/ui/Drawer/List';
+import AddNewItem from '../../components/ui/Drawer/AddNewItem';
 
 export default function Drawer() {
   const [newItem, setNewItemDisp] = useState(false);

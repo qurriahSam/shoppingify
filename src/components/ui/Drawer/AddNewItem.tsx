@@ -1,4 +1,36 @@
+import { ChangeEvent, useState } from 'react';
+
+interface INewItem {
+  _id: null | string;
+  category: string;
+  name: string;
+  image: null | string;
+  note: null | string;
+}
+
 export default function AddNewItem() {
+  const [newItem, setNewItem] = useState<INewItem>({
+    _id: null,
+    category: '',
+    name: '',
+    image: null,
+    note: null,
+  });
+
+  const updateNewItemInput = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    const key = e.target.id;
+    setNewItem({ ...newItem, [key]: value });
+  };
+  const updateNewItemCategory = (e: ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value;
+    const key = e.target.id;
+
+    console.log(key, value);
+
+    //setNewItem({ ...newItem, category: value, _id: key });
+  };
+
   return (
     <div className='p-5 h-full'>
       <h2 className='font-semibold mb-4'>Add a new Item</h2>
@@ -42,7 +74,7 @@ export default function AddNewItem() {
             </label>
 
             <select
-              id='category'
+              onChange={updateNewItemCategory}
               className='select select-md w-full text-xs max-w-xs border-2 border-base-300 focus:border-primary focus:outline-0 focus-within:outline-0'
             >
               <option disabled selected>

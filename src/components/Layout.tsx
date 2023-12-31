@@ -1,6 +1,6 @@
 import { ReactNode, useState, useEffect } from 'react';
-import SideNav from './sidenav';
-import Drawer from './shopping/drawer';
+import SideNav from './ui/SideNav/SideNav';
+import Drawer from '../pages/Drawer/drawer';
 //import DrawerMob from './shopping/drawerMob';
 
 export default function SiteWrapper({ children }: { children: ReactNode }) {

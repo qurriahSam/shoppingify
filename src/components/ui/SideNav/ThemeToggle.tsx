@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { themeChange } from 'theme-change';
 
-export function ThemeChanger() {
+export function ThemeToggle() {
   useEffect(() => {
     themeChange(false);
   }, []);
