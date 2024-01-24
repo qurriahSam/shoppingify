@@ -1,6 +1,10 @@
 import './index.css';
-import { listItems } from '../../server/data';
+//import { listItems } from '../../server/data';
 import { Item, Category } from '../../types/types';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../store/store';
+import { useEffect } from 'react';
+import fetchCategories from '../../store/category/categoryAsyncReducers';
 
 function Search() {
   return (
@@ -38,6 +42,14 @@ function Category({ categories }: { categories: Category }) {
 }
 
 export default function Home() {
+  const nuCategories = useSelector((state: RootState) => state.category);
+
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+  });
+
   return (
     <div>
       <div className='lg:flex items-center mb-8'>
@@ -48,7 +60,7 @@ export default function Home() {
         <Search />
       </div>
 
-      {listItems.map((item, index) => (
+      {nuCategories.map((item, index) => (
         <Category key={index} categories={item} />
       ))}
     </div>

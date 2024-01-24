@@ -1,11 +1,10 @@
-import { Category, HistoryListTitle, HistoryListItemsFull } from '../types/types';
+import { HistoryListTitle, HistoryListItemsFull } from '../types/types';
 
-export const listItems: Category[] = [
+export const listItems = [
   {
     category: 'fruit and vegetables',
     items: [
       { id: '1', name: 'Avocado' },
-      { id: '2', name: 'Bananas' },
       { id: '3', name: 'Cabbage' },
       { id: '4', name: 'skuma' },
       { id: '5', name: 'grapes' },
@@ -19,7 +18,7 @@ export const listItems: Category[] = [
   {
     category: 'Beverages',
     items: [
-      { id: '6', name: 'Soda Water 500ml' },
+      { id: '6', name: 'Soda 500ml' },
       { id: '7', name: 'Beer' },
       { id: '8', name: 'Water' },
       { id: '9', name: 'Wine' },

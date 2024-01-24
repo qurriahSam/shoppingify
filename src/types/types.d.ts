@@ -1,9 +1,10 @@
 export interface Item {
-  id: string;
+  _id: string;
   name: string;
 }
 
 export interface Category {
+  _id: string;
   category: string;
   items: Item[];
 }
