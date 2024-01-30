@@ -1,12 +1,22 @@
 export interface Item {
   _id: string;
   name: string;
+  note: string;
+  image: string;
+}
+
+export enum Status {
+  initial = 'initial',
+  loading = 'loading',
+  updated = 'updated',
+  failed = 'failed',
 }
 
 export interface Category {
   _id: string;
   category: string;
   items: Item[];
+  __v: number;
 }
 
 export interface HistoryItem {
