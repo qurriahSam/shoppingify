@@ -1,10 +1,10 @@
 import './index.css';
 //import { listItems } from '../../server/data';
-import { Item, Category } from '../../types/types';
+import { Item, Category, Status } from '../../types/types';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store/store';
 import { useEffect } from 'react';
-import fetchCategories from '../../store/category/categoryAsyncReducers';
+import fetchCategories from '../../store/category/fetchItemsAsyncReducer';
 
 function Search() {
   return (
@@ -47,7 +47,9 @@ export default function Home() {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(fetchCategories());
+    if (nuCategories.status === Status.initial) {
+      dispatch(fetchCategories());
+    }
   });
 
   return (
@@ -60,8 +62,8 @@ export default function Home() {
         <Search />
       </div>
 
-      {nuCategories.map((item, index) => (
-        <Category key={index} categories={item} />
+      {nuCategories.data.map((category) => (
+        <Category key={category._id} categories={category} />
       ))}
     </div>
   );

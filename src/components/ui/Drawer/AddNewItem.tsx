@@ -77,9 +77,7 @@ export default function AddNewItem() {
               value={newItem.category}
               className='select select-md w-full text-xs max-w-xs border-2 border-base-300 focus:border-primary focus:outline-0 focus-within:outline-0'
             >
-              <option disabled selected>
-                Enter a category
-              </option>
+              <option disabled>Enter a category</option>
               <option>Homer</option>
               <option>Marge</option>
               <option>Bart</option>
