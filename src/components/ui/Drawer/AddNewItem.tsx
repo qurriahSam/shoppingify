@@ -1,7 +1,10 @@
 import { ChangeEvent, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../store/store';
+import addItem from '../../../store/category/reducers/addItemAsyncReducer';
 
 interface INewItem {
-  _id: string;
+  categoryId: string;
   category: string;
   name: string;
   image: string;
@@ -10,8 +13,8 @@ interface INewItem {
 
 export default function AddNewItem() {
   const [newItem, setNewItem] = useState<INewItem>({
-    _id: '',
-    category: '',
+    categoryId: '65b10b0494e43d9f9c2bfe89',
+    category: 'beverages',
     name: '',
     image: '',
     note: '',
@@ -25,10 +28,19 @@ export default function AddNewItem() {
     setNewItem({ ...newItem, [key]: value });
   };
 
+  const dispatch = useDispatch<AppDispatch>();
+
+  const submitNewItem = (e) => {
+    e.preventDefault();
+    console.log(newItem);
+
+    dispatch(addItem(newItem));
+  };
+
   return (
     <div className='p-5 h-full'>
       <h2 className='font-semibold mb-4'>Add a new Item</h2>
-      <form className='form-control h-full flex flex-col justify-between'>
+      <form className='form-control h-full flex flex-col justify-between' onSubmit={submitNewItem}>
         <div>
           <div className='mb-4'>
             <label htmlFor='name' className='label-text text-xs font-medium'>

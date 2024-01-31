@@ -4,7 +4,7 @@ import { Item, Category, Status } from '../../types/types';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store/store';
 import { useEffect } from 'react';
-import fetchCategories from '../../store/category/fetchItemsAsyncReducer';
+import fetchCategories from '../../store/category/reducers/fetchItemsAsyncReducer';
 
 function Search() {
   return (
@@ -62,7 +62,7 @@ export default function Home() {
         <Search />
       </div>
 
-      {nuCategories.data.map((category) => (
+      {nuCategories.data?.map((category) => (
         <Category key={category._id} categories={category} />
       ))}
     </div>
