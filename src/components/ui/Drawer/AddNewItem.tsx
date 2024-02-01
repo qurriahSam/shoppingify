@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../../store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../../store/store';
 import addItem from '../../../store/category/reducers/addItemAsyncReducer';
 
 interface INewItem {
@@ -13,12 +13,14 @@ interface INewItem {
 
 export default function AddNewItem() {
   const [newItem, setNewItem] = useState<INewItem>({
-    categoryId: '65b10b0494e43d9f9c2bfe89',
-    category: 'beverages',
+    categoryId: '',
+    category: '',
     name: '',
     image: '',
     note: '',
   });
+
+  const store = useSelector((state: RootState) => state.category);
 
   const updateNewItem = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -28,13 +30,26 @@ export default function AddNewItem() {
     setNewItem({ ...newItem, [key]: value });
   };
 
+  const updateCategory = (e: ChangeEvent<HTMLSelectElement>) => {
+    const _id = store.data.filter((cats) => cats.category === e.target.value)[0]._id;
+
+    setNewItem({ ...newItem, category: e.target.value, categoryId: _id });
+    console.log(newItem);
+  };
+
   const dispatch = useDispatch<AppDispatch>();
 
   const submitNewItem = (e) => {
     e.preventDefault();
-    console.log(newItem);
 
     dispatch(addItem(newItem));
+    setNewItem({
+      categoryId: '',
+      category: '',
+      name: '',
+      image: '',
+      note: '',
+    });
   };
 
   return (
@@ -74,7 +89,9 @@ export default function AddNewItem() {
             <input
               id='image'
               type='text'
-              placeholder='Enter a url'
+              placeholder='Enter a URL'
+              onChange={updateNewItem}
+              value={newItem.image}
               className='input input-md placeholder:text-xs w-full border-2 border-base-300 focus:border-primary focus:outline-0 focus-within:outline-0'
             />
           </div>
@@ -85,15 +102,14 @@ export default function AddNewItem() {
 
             <select
               id='category'
-              onChange={updateNewItem}
+              onChange={updateCategory}
               value={newItem.category}
               className='select select-md w-full text-xs max-w-xs border-2 border-base-300 focus:border-primary focus:outline-0 focus-within:outline-0'
             >
-              <option disabled>Enter a category</option>
-              <option>Homer</option>
-              <option>Marge</option>
-              <option>Bart</option>
-              <option>Lisa</option>
+              <option>--Select Category--</option>
+              {store.data.map((catGroup) => {
+                return <option key={catGroup._id}>{catGroup.category}</option>;
+              })}
             </select>
           </div>
         </div>

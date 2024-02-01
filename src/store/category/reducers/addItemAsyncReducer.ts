@@ -11,7 +11,7 @@ interface INewItem {
 
 const addItem = createAsyncThunk('category/addItem', async (item: INewItem) => {
   const sendData = {
-    _id: item.categoryId,
+    categoryId: item.categoryId,
     category: item.category,
     item: {
       name: item.name,

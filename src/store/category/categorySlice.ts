@@ -49,6 +49,7 @@ const categorySlice = createSlice({
           console.log('findCat', findCat);
 
           findCat.items.push(action.payload.items[0]);
+          state.status = Status.updated;
         } else {
           state.data.push(action.payload);
           state.status = Status.updated;
