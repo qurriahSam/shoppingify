@@ -32,9 +32,7 @@ export default function AddNewItem() {
 
   const updateCategory = (e: ChangeEvent<HTMLSelectElement>) => {
     const _id = store.data.filter((cats) => cats.category === e.target.value)[0]._id;
-
     setNewItem({ ...newItem, category: e.target.value, categoryId: _id });
-    console.log(newItem);
   };
 
   const dispatch = useDispatch<AppDispatch>();

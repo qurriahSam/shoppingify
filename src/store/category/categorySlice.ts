@@ -1,5 +1,5 @@
 import { Category, Status } from '../../types/types';
-import { createSlice, current } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import fetchCategories from './reducers/fetchItemsAsyncReducer';
 import addItem from './reducers/addItemAsyncReducer';
 
@@ -41,21 +41,15 @@ const categorySlice = createSlice({
         return (state = { ...state, status: Status.loading });
       })
       .addCase(addItem.fulfilled, (state, action) => {
-        console.log('payload', action.payload);
-
         const findCat = state.data.find((category) => category._id === action.payload._id);
 
         if (findCat) {
-          console.log('findCat', findCat);
-
           findCat.items.push(action.payload.items[0]);
           state.status = Status.updated;
         } else {
           state.data.push(action.payload);
           state.status = Status.updated;
         }
-        console.log(current(state));
-
         return state;
       })
       .addCase(addItem.rejected, (state) => {

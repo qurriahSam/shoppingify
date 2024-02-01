@@ -22,8 +22,6 @@ const addItem = createAsyncThunk('category/addItem', async (item: INewItem) => {
 
   try {
     const response = await axios.post('http://localhost:3000', sendData);
-    console.log('res.success');
-
     return response.data;
   } catch (error) {
     console.error(error);
