@@ -12,5 +12,13 @@ export default function Drawer() {
     setNewItemDisp(!newItem);
   };
 
-  return <>{newItem ? <AddNewItem /> : <List toggleNewItem={toggleNewItem} />}</>;
+  return (
+    <>
+      {newItem ? (
+        <AddNewItem toggleNewItem={toggleNewItem} />
+      ) : (
+        <List toggleNewItem={toggleNewItem} />
+      )}
+    </>
+  );
 }

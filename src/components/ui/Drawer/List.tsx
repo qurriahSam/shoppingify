@@ -30,7 +30,7 @@ function CancelComplete({ toggleEditMode }: { toggleEditMode: () => void }) {
 }
 
 export default function List({ toggleNewItem }: { toggleNewItem: () => void }) {
-  const [editMode, setEditMode] = useState(true);
+  const [editMode, setEditMode] = useState(false);
 
   const toggleEditMode = () => setEditMode(!editMode);
 

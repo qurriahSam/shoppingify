@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, SyntheticEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../../store/store';
 import addItem from '../../../store/category/reducers/addItemAsyncReducer';
@@ -11,7 +11,7 @@ interface INewItem {
   note: string;
 }
 
-export default function AddNewItem() {
+export default function AddNewItem({ toggleNewItem }: { toggleNewItem: () => void }) {
   const [newItem, setNewItem] = useState<INewItem>({
     categoryId: '',
     category: '',
@@ -37,10 +37,13 @@ export default function AddNewItem() {
 
   const dispatch = useDispatch<AppDispatch>();
 
-  const submitNewItem = (e) => {
+  const submitNewItem = (e: SyntheticEvent) => {
     e.preventDefault();
 
-    dispatch(addItem(newItem));
+    dispatch(addItem(newItem)).then(() => {
+      toggleNewItem();
+    });
+
     setNewItem({
       categoryId: '',
       category: '',
