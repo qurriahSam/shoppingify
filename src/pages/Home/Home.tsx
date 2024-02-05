@@ -1,10 +1,11 @@
 import './index.css';
 //import { listItems } from '../../server/data';
-import { Item, Category, Status } from '../../types/types';
+import { Item, Category, Status, ShoppingItemCategory } from '../../types/types';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store/store';
 import { useEffect } from 'react';
 import fetchCategories from '../../store/category/reducers/fetchItemsAsyncReducer';
+import { addItemToList } from '../../store/shoppingList/shoppingListSlice';
 
 function Search() {
   return (
@@ -19,9 +20,18 @@ function Search() {
   );
 }
 
-function DisplayItem({ item }: { item: Item }) {
+function DisplayItem({
+  item,
+  addItemToShoppingList,
+}: {
+  item: Item;
+  addItemToShoppingList: (item: Item) => void;
+}) {
   return (
-    <button className='btn text-start font-normal flex h-fit w-28 md:w-32 p-1 m-2 rounded-lg shadow-lg text-sm bg-base-100'>
+    <button
+      className='btn text-start font-normal flex h-fit w-28 md:w-32 p-1 m-2 rounded-lg shadow-lg text-sm bg-base-100'
+      onClick={() => addItemToShoppingList(item)}
+    >
       <p className='me-1 p-1 w-16 text-xs'>{item.name}</p>
       <i className='material-symbols-outlined text-sm text-neutral-600'>add</i>
     </button>
@@ -29,12 +39,21 @@ function DisplayItem({ item }: { item: Item }) {
 }
 
 function Category({ categories }: { categories: Category }) {
+  const dispatch = useDispatch<AppDispatch>();
+  const addItemToShoppingList = (item: Item) => {
+    const itemWithCategory: ShoppingItemCategory = {
+      _id: categories._id,
+      category: categories.category,
+      items: [{ _id: item._id, name: item.name, count: 1, complete: false }],
+    };
+    dispatch(addItemToList(itemWithCategory));
+  };
   return (
     <div className='mt-10'>
       <h2 className='font-medium'>{categories.category}</h2>
       <div className='flex flex-wrap'>
         {categories.items.map((item, index) => (
-          <DisplayItem key={index} item={item} />
+          <DisplayItem key={index} item={item} addItemToShoppingList={addItemToShoppingList} />
         ))}
       </div>
     </div>

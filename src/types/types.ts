@@ -40,3 +40,18 @@ export interface HistoryListTitle {
   date: string;
   status: string;
 }
+
+//shopping list
+
+export interface ShoppingItem {
+  _id: string;
+  name: string;
+  count: number;
+  complete: boolean;
+}
+
+export interface ShoppingItemCategory {
+  _id: string;
+  category: string;
+  items: ShoppingItem[];
+}

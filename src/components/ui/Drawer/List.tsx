@@ -2,6 +2,9 @@ import { useState } from 'react';
 import wine from '../../../assets/source.svg';
 import CheckList from './CheckList';
 import CreateList from './CreateList';
+import { ShoppingItemCategory } from '../../../types/types';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../store/store';
 
 function ListSave({ toggleEditMode }: { toggleEditMode: () => void }) {
   return (
@@ -30,6 +33,19 @@ function CancelComplete({ toggleEditMode }: { toggleEditMode: () => void }) {
 }
 
 export default function List({ toggleNewItem }: { toggleNewItem: () => void }) {
+  const [shoppingList, setShoppingList] = useState<ShoppingItemCategory[]>([
+    {
+      _id: 'sdasdfds',
+      category: 'fruits',
+      items: [{ _id: 'fdsfdfewsdsf', name: 'apple', complete: false, count: 1 }],
+    },
+    {
+      _id: 'sdasdfda',
+      category: 'beverage',
+      items: [{ _id: 'fdsfdfewsdsfs', name: 'soda', complete: false, count: 1 }],
+    },
+  ]);
+  const shopingList = useSelector((state: RootState) => state.shoppingList);
   const [editMode, setEditMode] = useState(false);
 
   const toggleEditMode = () => setEditMode(!editMode);
@@ -47,7 +63,13 @@ export default function List({ toggleNewItem }: { toggleNewItem: () => void }) {
         </div>
         <img src={wine} alt='' className='absolute top-0.5' />
       </div>
-      <div className='grow'>{editMode ? <CreateList /> : <CheckList />}</div>
+      <div className='grow'>
+        {editMode ? (
+          <CreateList shoppingList={shoppingList} setShoppingList={setShoppingList} />
+        ) : (
+          <CheckList shoppingList={shopingList} setShoppingList={setShoppingList} />
+        )}
+      </div>
       {editMode ? (
         <ListSave toggleEditMode={toggleEditMode} />
       ) : (
