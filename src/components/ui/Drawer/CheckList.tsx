@@ -7,7 +7,9 @@ export default function CheckList({ shoppingList }: { shoppingList: ShoppingItem
 
   return (
     <>
-      <h2 className='my-5 font-medium'>Shopping List</h2>
+      <div className=''>
+        <h2 className='my-5 font-medium'>Shopping List</h2>
+      </div>
       <div className='w-full'>
         {shoppingList.length === 0 ? (
           <p className='text-xs font-medium text-neutral-500 mb-3'>list is empty</p>

@@ -3,7 +3,12 @@ import { ShoppingItemCategory } from '../../../types/types';
 export default function CreateList({ shoppingList }: { shoppingList: ShoppingItemCategory[] }) {
   return (
     <>
-      <h2 className='my-5 font-medium'>Shopping List</h2>
+      <div className='flex justify-between'>
+        <h2 className='my-5 font-medium'>Shopping List</h2>
+        <button className='btn btn-link btn-xs no-underline text-neutral hover:no-underline'>
+          <i className='material-symbols-outlined text-base'>cancel</i>
+        </button>
+      </div>
       <div className='w-full'>
         {shoppingList.map((itemColl) => {
           return (
