@@ -1,12 +1,6 @@
 import { ShoppingItemCategory } from '../../../types/types';
 
-export default function CreateList({
-  shoppingList,
-  setShoppingList,
-}: {
-  shoppingList: ShoppingItemCategory[];
-  setShoppingList: React.Dispatch<React.SetStateAction<ShoppingItemCategory[]>>;
-}) {
+export default function CreateList({ shoppingList }: { shoppingList: ShoppingItemCategory[] }) {
   return (
     <>
       <h2 className='my-5 font-medium'>Shopping List</h2>

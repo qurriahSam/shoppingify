@@ -1,13 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { ShoppingItemCategory } from '../../types/types';
 
-const initialState: ShoppingItemCategory[] = [
-  {
-    _id: '',
-    category: 'fruits',
-    items: [{ _id: 'fdsfdfewsdsf', name: 'apple', complete: false, count: 1 }],
-  },
-];
+const initialState: ShoppingItemCategory[] = [];
 
 const shoppingListSlice = createSlice({
   name: 'shoppingList',
@@ -22,8 +16,16 @@ const shoppingListSlice = createSlice({
       state.push(action.payload);
       return state;
     },
+    checkoutItemFromList: (state, action: PayloadAction<ShoppingItemCategory>) => {
+      const category = state.find((category) => category._id === action.payload._id);
+      if (category) {
+        const item = category.items.find((item) => item._id === action.payload.items[0]._id);
+        if (item) item.complete = !item.complete;
+      }
+      return state;
+    },
   },
 });
 
-export const { addItemToList } = shoppingListSlice.actions;
+export const { addItemToList, checkoutItemFromList } = shoppingListSlice.actions;
 export default shoppingListSlice.reducer;
