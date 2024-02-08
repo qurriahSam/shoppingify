@@ -10,7 +10,21 @@ const shoppingListSlice = createSlice({
     addItemToList: (state, action: PayloadAction<ShoppingItemCategory>) => {
       const category = state.find((category) => category._id === action.payload._id);
       if (category) {
-        category.items.push(action.payload.items[0]);
+        const item = category.items.find((item) => item._id === action.payload.items[0]._id);
+        if (!item) category.items.push(action.payload.items[0]);
+        return state;
+      }
+      state.push(action.payload);
+      return state;
+    },
+    removeItemFromList: (state, action: PayloadAction<ShoppingItemCategory>) => {
+      const category = state.find((category) => category._id === action.payload._id);
+      if (category) {
+        const item = category.items.find((item) => item._id === action.payload.items[0]._id);
+        if (item)
+          category.items = category.items.filter(
+            (item) => item._id !== action.payload.items[0]._id
+          );
         return state;
       }
       state.push(action.payload);
@@ -43,6 +57,11 @@ const shoppingListSlice = createSlice({
   },
 });
 
-export const { addItemToList, checkoutItemFromList, increaseItemCount, decreaseItemCount } =
-  shoppingListSlice.actions;
+export const {
+  addItemToList,
+  checkoutItemFromList,
+  increaseItemCount,
+  decreaseItemCount,
+  removeItemFromList,
+} = shoppingListSlice.actions;
 export default shoppingListSlice.reducer;
