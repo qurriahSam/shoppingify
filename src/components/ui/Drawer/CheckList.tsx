@@ -2,13 +2,24 @@ import { useDispatch } from 'react-redux';
 import { ShoppingItemCategory } from '../../../types/types';
 import { checkoutItemFromList } from '../../../store/shoppingList/shoppingListSlice';
 
-export default function CheckList({ shoppingList }: { shoppingList: ShoppingItemCategory[] }) {
+export default function CheckList({
+  shoppingList,
+  toggleEditMode,
+}: {
+  shoppingList: ShoppingItemCategory[];
+  toggleEditMode: () => void;
+}) {
   const dispatch = useDispatch();
 
   return (
     <>
-      <div className=''>
+      <div className='flex justify-between items-center'>
         <h2 className='my-5 font-medium'>Shopping List</h2>
+        <button className='btn btn-link btn-xs no-underline text-neutral hover:no-underline'>
+          <i className='material-symbols-outlined text-base' onClick={toggleEditMode}>
+            edit
+          </i>
+        </button>
       </div>
       <div className='w-full'>
         {shoppingList.length === 0 ? (

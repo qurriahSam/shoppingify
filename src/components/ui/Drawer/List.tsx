@@ -2,7 +2,6 @@ import { useState } from 'react';
 import wine from '../../../assets/source.svg';
 import CheckList from './CheckList';
 import CreateList from './CreateList';
-import { ShoppingItemCategory } from '../../../types/types';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store/store';
 
@@ -53,9 +52,9 @@ export default function List({ toggleNewItem }: { toggleNewItem: () => void }) {
       </div>
       <div className='grow'>
         {editMode ? (
-          <CreateList shoppingList={shoppingList} />
+          <CreateList shoppingList={shoppingList} toggleEditMode={toggleEditMode} />
         ) : (
-          <CheckList shoppingList={shoppingList} />
+          <CheckList shoppingList={shoppingList} toggleEditMode={toggleEditMode} />
         )}
       </div>
       {editMode ? (

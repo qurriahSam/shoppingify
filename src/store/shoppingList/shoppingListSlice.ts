@@ -24,8 +24,25 @@ const shoppingListSlice = createSlice({
       }
       return state;
     },
+    increaseItemCount: (state, action: PayloadAction<ShoppingItemCategory>) => {
+      const category = state.find((category) => category._id === action.payload._id);
+      if (category) {
+        const item = category.items.find((item) => item._id === action.payload.items[0]._id);
+        if (item) item.count = ++item.count;
+      }
+      return state;
+    },
+    decreaseItemCount: (state, action: PayloadAction<ShoppingItemCategory>) => {
+      const category = state.find((category) => category._id === action.payload._id);
+      if (category) {
+        const item = category.items.find((item) => item._id === action.payload.items[0]._id);
+        if (item && item.count > 1) item.count = --item.count;
+      }
+      return state;
+    },
   },
 });
 
-export const { addItemToList, checkoutItemFromList } = shoppingListSlice.actions;
+export const { addItemToList, checkoutItemFromList, increaseItemCount, decreaseItemCount } =
+  shoppingListSlice.actions;
 export default shoppingListSlice.reducer;
