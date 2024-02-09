@@ -17,14 +17,6 @@ export default function CreateList({
 
   return (
     <>
-      <div className='flex justify-between items-center'>
-        <h2 className='my-5 font-medium'>Shopping List</h2>
-        <button className='btn btn-link btn-xs no-underline text-neutral hover:no-underline'>
-          <i className='material-symbols-outlined text-base' onClick={toggleEditMode}>
-            close
-          </i>
-        </button>
-      </div>
       <div className='w-full'>
         {shoppingList.map((itemColl) => {
           return (

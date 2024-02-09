@@ -50,7 +50,21 @@ export default function List({ toggleNewItem }: { toggleNewItem: () => void }) {
         </div>
         <img src={wine} alt='' className='absolute top-0.5' />
       </div>
-      <div className='grow'>
+      <div className='flex justify-between items-center'>
+        <h2 className='my-5 font-medium'>Shopping List</h2>
+        <button className='btn btn-link btn-xs no-underline text-neutral hover:no-underline'>
+          {editMode ? (
+            <i className='material-symbols-outlined text-base' onClick={toggleEditMode}>
+              close
+            </i>
+          ) : (
+            <i className='material-symbols-outlined text-base' onClick={toggleEditMode}>
+              edit
+            </i>
+          )}
+        </button>
+      </div>
+      <div className='grow overflow-y-auto'>
         {editMode ? (
           <CreateList shoppingList={shoppingList} toggleEditMode={toggleEditMode} />
         ) : (

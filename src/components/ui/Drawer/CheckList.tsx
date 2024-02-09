@@ -13,14 +13,6 @@ export default function CheckList({
 
   return (
     <>
-      <div className='flex justify-between items-center'>
-        <h2 className='my-5 font-medium'>Shopping List</h2>
-        <button className='btn btn-link btn-xs no-underline text-neutral hover:no-underline'>
-          <i className='material-symbols-outlined text-base' onClick={toggleEditMode}>
-            edit
-          </i>
-        </button>
-      </div>
       <div className='w-full'>
         {shoppingList.length === 0 ? (
           <p className='text-xs font-medium text-neutral-500 mb-3'>list is empty</p>
