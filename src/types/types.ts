@@ -55,3 +55,10 @@ export interface ShoppingItemCategory {
   category: string;
   items: ShoppingItem[];
 }
+
+export interface ShoppingList {
+  title: string;
+  list: ShoppingItemCategory[];
+  status: boolean;
+  date: Date;
+}
