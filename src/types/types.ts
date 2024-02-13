@@ -59,6 +59,6 @@ export interface ShoppingItemCategory {
 export interface ShoppingList {
   title: string;
   list: ShoppingItemCategory[];
-  status: boolean;
+  status: string;
   date: Date;
 }

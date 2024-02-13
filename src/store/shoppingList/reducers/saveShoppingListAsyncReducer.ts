@@ -6,7 +6,12 @@ const saveShoppingList = createAsyncThunk(
   'shoppingList/saveShoppingList',
   async (shoppingList: ShoppingList) => {
     try {
-      const sendData = await axios.post('http://localhost:3000', shoppingList);
-    } catch (error) {}
+      const response = await axios.post('http://localhost:3000/newShopping', shoppingList);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
   }
 );
+
+export default saveShoppingList;
