@@ -1,12 +1,12 @@
 import { useDispatch } from 'react-redux';
-import { ShoppingItemCategory } from '../../../types/types';
+import { ShoppingList } from '../../../types/types';
 import { checkoutItemFromList } from '../../../store/shoppingList/shoppingListSlice';
 
 export default function CheckList({
   shoppingList,
   toggleEditMode,
 }: {
-  shoppingList: ShoppingItemCategory[];
+  shoppingList: ShoppingList;
   toggleEditMode: () => void;
 }) {
   const dispatch = useDispatch();
@@ -14,11 +14,11 @@ export default function CheckList({
   return (
     <>
       <div className='w-full'>
-        {shoppingList.length === 0 ? (
+        {shoppingList.list.length === 0 ? (
           <p className='text-xs font-medium text-neutral-500 mb-3'>list is empty</p>
         ) : (
-          shoppingList.map((itemCat) => (
-            <>
+          shoppingList.list.map((itemCat) => (
+            <div key={itemCat._id}>
               <p className='text-xs font-medium text-neutral-500 mb-3'>{itemCat.category}</p>
               {itemCat.items.map((item) => (
                 <div key={item._id} className='flex justify-between text-sm font-medium py-2'>
@@ -50,7 +50,7 @@ export default function CheckList({
                   </div>
                 </div>
               ))}
-            </>
+            </div>
           ))
         )}
       </div>

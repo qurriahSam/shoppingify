@@ -57,8 +57,11 @@ export interface ShoppingItemCategory {
 }
 
 export interface ShoppingList {
+  _id: string;
+  update: Status;
   title: string;
   list: ShoppingItemCategory[];
   status: string;
-  date: Date;
+  date: string;
+  __v: number;
 }

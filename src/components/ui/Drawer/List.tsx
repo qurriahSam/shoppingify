@@ -1,24 +1,9 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import wine from '../../../assets/source.svg';
 import CheckList from './CheckList';
 import CreateList from './CreateList';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../../store/store';
-
-function ListSave({ toggleEditMode }: { toggleEditMode: () => void }) {
-  return (
-    <form className='flex mt-2 h-fit w-fit rounded-lg shadow border bg-base-100 focus-within:border-primary'>
-      <input
-        type='text'
-        placeholder='Enter a name'
-        className='input input-xs max-w-sm focus:border-0 outlineR focus-within:border-0'
-      />
-      <button className='btn btn-primary btn-sm' onClick={toggleEditMode}>
-        Save
-      </button>
-    </form>
-  );
-}
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../../store/store';
 
 function CancelComplete({ toggleEditMode }: { toggleEditMode: () => void }) {
   return (
@@ -35,7 +20,35 @@ export default function List({ toggleNewItem }: { toggleNewItem: () => void }) {
   const shoppingList = useSelector((state: RootState) => state.shoppingList);
   const [editMode, setEditMode] = useState(true);
 
+  const dispatch = useDispatch<AppDispatch>();
+
   const toggleEditMode = () => setEditMode(!editMode);
+
+  function ListSave() {
+    const saveShopping = () => {
+      dispatch();
+    };
+
+    const setTitle = (e: ChangeEvent<HTMLInputElement>) => {
+      e.preventDefault();
+      shoppingList.title = e.target.value;
+    };
+
+    return (
+      <form className='flex mt-2 h-fit w-fit rounded-lg shadow border bg-base-100 focus-within:border-primary'>
+        <input
+          type='text'
+          placeholder='Enter a name'
+          className='input input-xs max-w-sm focus:border-0 outlineR focus-within:border-0'
+          value={shoppingList.title}
+          onChange={setTitle}
+        />
+        <button className='btn btn-primary btn-sm' onClick={toggleEditMode}>
+          Save
+        </button>
+      </form>
+    );
+  }
 
   return (
     <div className='p-5 h-full flex flex-col'>
@@ -71,11 +84,7 @@ export default function List({ toggleNewItem }: { toggleNewItem: () => void }) {
           <CheckList shoppingList={shoppingList} toggleEditMode={toggleEditMode} />
         )}
       </div>
-      {editMode ? (
-        <ListSave toggleEditMode={toggleEditMode} />
-      ) : (
-        <CancelComplete toggleEditMode={toggleEditMode} />
-      )}
+      {editMode ? <ListSave /> : <CancelComplete toggleEditMode={toggleEditMode} />}
     </div>
   );
 }
