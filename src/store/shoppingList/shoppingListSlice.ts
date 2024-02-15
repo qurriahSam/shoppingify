@@ -7,7 +7,8 @@ const initialState: ShoppingList = {
   update: Status.initial,
   title: '',
   list: [],
-  status: '',
+  status: 'incomplete',
+  current: true,
   date: new Date().toISOString(),
   __v: 0,
 };
@@ -63,17 +64,21 @@ const shoppingListSlice = createSlice({
       }
       return state;
     },
+    changeShoppingListTitle: (state, action: PayloadAction<string>) => ({
+      ...state,
+      title: action.payload,
+    }),
   },
   extraReducers: (builder) => {
     builder
       .addCase(saveShoppingList.pending, (state) => {
-        return state;
+        return (state = { ...state, update: Status.loading });
       })
       .addCase(saveShoppingList.fulfilled, (state, action: PayloadAction<ShoppingList>) => {
         return (state = action.payload);
       })
       .addCase(saveShoppingList.rejected, (state) => {
-        return (state = { ...state });
+        return (state = { ...state, update: Status.failed });
       });
   },
 });
@@ -84,5 +89,6 @@ export const {
   increaseItemCount,
   decreaseItemCount,
   removeItemFromList,
+  changeShoppingListTitle,
 } = shoppingListSlice.actions;
 export default shoppingListSlice.reducer;

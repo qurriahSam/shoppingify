@@ -62,6 +62,7 @@ export interface ShoppingList {
   title: string;
   list: ShoppingItemCategory[];
   status: string;
+  current: boolean;
   date: string;
   __v: number;
 }

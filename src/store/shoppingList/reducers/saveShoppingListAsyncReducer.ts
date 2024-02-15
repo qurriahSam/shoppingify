@@ -4,14 +4,21 @@ import axios from 'axios';
 
 const saveShoppingList = createAsyncThunk(
   'shoppingList/saveShoppingList',
-  async (shoppingList: ShoppingList): Promise<ShoppingList> => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  async (shoppingList: any): Promise<ShoppingList> => {
     const sendData = {
       title: shoppingList.title,
       list: shoppingList.list,
       status: shoppingList.status,
+      current: shoppingList.current,
       date: shoppingList.date,
     };
     try {
+      if (shoppingList._id.length > 1) {
+        console.log(shoppingList);
+        const response = await axios.post('http://localhost:3000/updateShopping', shoppingList);
+        return { ...response.data, update: Status.updated };
+      }
       const response = await axios.post('http://localhost:3000/newShopping', sendData);
       return { ...response.data, update: Status.updated };
     } catch (error) {

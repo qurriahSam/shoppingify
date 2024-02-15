@@ -2,13 +2,7 @@ import { useDispatch } from 'react-redux';
 import { ShoppingList } from '../../../types/types';
 import { checkoutItemFromList } from '../../../store/shoppingList/shoppingListSlice';
 
-export default function CheckList({
-  shoppingList,
-  toggleEditMode,
-}: {
-  shoppingList: ShoppingList;
-  toggleEditMode: () => void;
-}) {
+export default function CheckList({ shoppingList }: { shoppingList: ShoppingList }) {
   const dispatch = useDispatch();
 
   return (
@@ -36,6 +30,7 @@ export default function CheckList({
                           })
                         )
                       }
+                      readOnly
                     />
                     {!item.complete ? (
                       <p className=''>{item.name}</p>
