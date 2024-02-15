@@ -85,9 +85,9 @@ export default function List({ toggleNewItem }: { toggleNewItem: () => void }) {
       </div>
       <div className='grow overflow-y-auto'>
         {editMode ? (
-          <CreateList shoppingList={shoppingList} toggleEditMode={toggleEditMode} />
+          <CreateList shoppingList={shoppingList} />
         ) : (
-          <CheckList shoppingList={shoppingList} toggleEditMode={toggleEditMode} />
+          <CheckList shoppingList={shoppingList} />
         )}
       </div>
       {editMode ? (
