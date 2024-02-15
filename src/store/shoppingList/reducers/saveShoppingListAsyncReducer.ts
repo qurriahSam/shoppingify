@@ -16,10 +16,16 @@ const saveShoppingList = createAsyncThunk(
     try {
       if (shoppingList._id.length > 1) {
         console.log(shoppingList);
-        const response = await axios.post('http://localhost:3000/updateShopping', shoppingList);
+        const response = await axios.post(
+          'https://shoppingify-lovat.vercel.app/updateShopping',
+          shoppingList
+        );
         return { ...response.data, update: Status.updated };
       }
-      const response = await axios.post('http://localhost:3000/newShopping', sendData);
+      const response = await axios.post(
+        'https://shoppingify-lovat.vercel.app/newShopping',
+        sendData
+      );
       return { ...response.data, update: Status.updated };
     } catch (error) {
       console.log(error);

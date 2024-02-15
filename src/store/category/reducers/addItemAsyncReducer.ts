@@ -21,7 +21,7 @@ const addItem = createAsyncThunk('category/addItem', async (item: INewItem) => {
   };
 
   try {
-    const response = await axios.post('http://localhost:3000', sendData);
+    const response = await axios.post('https://shoppingify-lovat.vercel.app', sendData);
     return response.data;
   } catch (error) {
     console.error(error);
