@@ -1,4 +1,3 @@
-import { historyListItems } from '../../../server/data';
 import { HistoryItem, HistoryListItems /* HistoryListItemsFull */ } from '../../../types/types';
 
 function DisplayHistItem({ item }: { item: HistoryItem }) {
@@ -29,15 +28,15 @@ export default function HistShopList(/* { histListTitle }: { histListTitle: Hist
       <button className='btn btn-link text-sm no-underline hover:no-underline'>
         <i className='material-symbols-outlined text-sm font-semibold'>arrow_back</i>Back
       </button>
-      <h2 className='mb-2 font-medium'>{historyListItems.title.name}</h2>
+      <h2 className='mb-2 font-medium'>history name</h2>
       <span className='flex text-neutral-500'>
         <i className='material-symbols-outlined text-xs mr-1'>event_note</i>
-        <p className='text-xs font-medium'>{historyListItems.title.date}</p>
+        <p className='text-xs font-medium'>date</p>
       </span>
       <div>
-        {historyListItems.goods.map((good, index) => (
+        {/*         {historyListItems.goods.map((good, index) => (
           <DisplayCategory key={index} histList={good} />
-        ))}
+        ))} */}
       </div>
     </div>
   );
