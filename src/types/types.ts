@@ -36,7 +36,7 @@ export interface HistoryListItemsFull {
 
 export interface HistoryListTitle {
   id: string;
-  name: string;
+  title: string;
   date: string;
   status: string;
 }
