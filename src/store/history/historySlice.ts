@@ -6,7 +6,7 @@ const initialState = {
   status: Status.initial,
   historyList: [
     {
-      id: '',
+      _id: '',
       title: '',
       date: '',
       status: '',
