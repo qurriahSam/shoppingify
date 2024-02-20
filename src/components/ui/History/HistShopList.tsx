@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { HistoryItem, HistoryListItems } from '../../../types/types';
 import { AppDispatch, RootState } from '../../../store/store';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { getHistoryItems } from '../../../store/historyItems/reducers/getHistoryItems';
 
@@ -31,6 +31,9 @@ export default function HistShopList() {
   const historyListItems = useSelector((state: RootState) => state.historyItems);
   const { id } = useParams();
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+
+  const handleClick = () => navigate('/history');
 
   useEffect(() => {
     if (id) {
@@ -40,13 +43,16 @@ export default function HistShopList() {
 
   return (
     <div>
-      <button className='btn btn-link text-sm no-underline hover:no-underline'>
+      <button
+        className='btn btn-link text-sm no-underline hover:no-underline'
+        onClick={handleClick}
+      >
         <i className='material-symbols-outlined text-sm font-semibold'>arrow_back</i>Back
       </button>
       <h2 className='mb-2 font-medium'>{historyListItems.title}</h2>
       <span className='flex text-neutral-500'>
         <i className='material-symbols-outlined text-xs mr-1'>event_note</i>
-        <p className='text-xs font-medium'>date</p>
+        <p className='text-xs font-medium'>{new Date(historyListItems.date).toDateString()}</p>
       </span>
       <div>
         {historyListItems.list.map((good, index) => (

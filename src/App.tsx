@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route index path='/' Component={Home} />
         <Route path='history' Component={History} />
-        <Route path='history/hst' Component={HistShopList} />
+        <Route path='history/:id' Component={HistShopList} />
         <Route path='statistics' Component={Stats} />
       </Routes>
     </SiteWrapper>
