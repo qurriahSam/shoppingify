@@ -20,25 +20,40 @@ export interface Category {
 }
 
 export interface HistoryItem {
-  item: Item;
+  _id: string;
+  name: string;
+  complete: boolean;
   count: number;
 }
 
 export interface HistoryListItems {
   category: string;
   items: HistoryItem[];
+  _id: string;
 }
 
 export interface HistoryListItemsFull {
   title: HistoryListTitle;
+  status: Status;
   goods: HistoryListItems[];
 }
 
 export interface HistoryListTitle {
-  id: string;
+  _id: string;
   title: string;
   date: string;
   status: string;
+}
+
+export interface IHistoryState {
+  _id: string;
+  stateStatus: Status;
+  title: string;
+  list: HistoryListItems[];
+  status: string;
+  current: boolean;
+  date: string;
+  __v: number;
 }
 
 //shopping list
