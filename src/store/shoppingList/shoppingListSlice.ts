@@ -1,6 +1,8 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { ShoppingItemCategory, ShoppingList, Status } from '../../types/types';
 import saveShoppingList from './reducers/saveShoppingListAsyncReducer';
+import getActiveShoppingList from './reducers/getActiveListAsync';
+import updateShoppingList from './reducers/updateShoppingListAsync';
 
 const initialState: ShoppingList = {
   _id: '',
@@ -79,6 +81,15 @@ const shoppingListSlice = createSlice({
       })
       .addCase(saveShoppingList.rejected, (state) => {
         return (state = { ...state, update: Status.failed });
+      })
+      .addCase(getActiveShoppingList.fulfilled, (state, action: PayloadAction<ShoppingList>) => {
+        return (state = { ...action.payload, update: Status.updated });
+      })
+      .addCase(updateShoppingList.pending, (state) => {
+        return (state = { ...state, update: Status.loading });
+      })
+      .addCase(updateShoppingList.fulfilled, (state, action: PayloadAction<ShoppingList>) => {
+        return (state = action.payload);
       });
   },
 });
