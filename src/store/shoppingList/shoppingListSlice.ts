@@ -3,6 +3,7 @@ import { ShoppingItemCategory, ShoppingList, Status } from '../../types/types';
 import saveShoppingList from './reducers/saveShoppingListAsyncReducer';
 import getActiveShoppingList from './reducers/getActiveListAsync';
 import updateShoppingList from './reducers/updateShoppingListAsync';
+import setListToInactive from './reducers/setListToInactive';
 
 const initialState: ShoppingList = {
   _id: '',
@@ -89,6 +90,9 @@ const shoppingListSlice = createSlice({
         return (state = { ...state, update: Status.loading });
       })
       .addCase(updateShoppingList.fulfilled, (state, action: PayloadAction<ShoppingList>) => {
+        return (state = action.payload);
+      })
+      .addCase(setListToInactive.fulfilled, (state, action: PayloadAction<ShoppingList>) => {
         return (state = action.payload);
       });
   },

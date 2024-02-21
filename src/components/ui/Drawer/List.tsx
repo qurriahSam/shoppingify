@@ -9,22 +9,32 @@ import saveShoppingList from '../../../store/shoppingList/reducers/saveShoppingL
 import { Status } from '../../../types/types';
 import getActiveShoppingList from '../../../store/shoppingList/reducers/getActiveListAsync';
 import updateShoppingList from '../../../store/shoppingList/reducers/updateShoppingListAsync';
+import setListToInactive from '../../../store/shoppingList/reducers/setListToInactive';
 
 function CancelComplete({ toggleEditMode }: { toggleEditMode: () => void }) {
   const shoppingList = useSelector((state: RootState) => state.shoppingList);
   const dispatch = useDispatch<AppDispatch>();
+
+  const updateOrCreateNew = () => {
+    if (shoppingList._id === '') {
+      toggleEditMode();
+    } else {
+      dispatch(updateShoppingList(shoppingList));
+    }
+  };
+
   return (
     <div className='flex justify-center'>
       <button
         className='btn btn-link no-underline hover:no-underline'
-        onClick={toggleEditMode}
+        onClick={() => dispatch(setListToInactive(shoppingList))}
         disabled={shoppingList.update === Status.loading}
       >
         Cancel
       </button>
       <button
         className='btn btn-primary'
-        onClick={() => dispatch(updateShoppingList(shoppingList))}
+        onClick={updateOrCreateNew}
         disabled={shoppingList.update === Status.loading}
       >
         {shoppingList.update === Status.loading ? (
