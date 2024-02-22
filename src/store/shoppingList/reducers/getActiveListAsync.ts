@@ -6,8 +6,9 @@ const getActiveShoppingList = createAsyncThunk(
   'shoppingList/getActiveShoppingList',
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async () => {
+    const URL = process.env.REACT_APP_API_URL;
     try {
-      const response = await axios('http://localhost:3000/current');
+      const response = await axios(`${URL}/current`);
       if (response.data === null) {
         return {
           _id: '',

@@ -6,6 +6,7 @@ const updateShoppingList = createAsyncThunk(
   'shoppingList/updateShoppingList',
 
   async (shoppingList: ShoppingList) => {
+    const URL = process.env.REACT_APP_API_URL;
     const sendData = {
       _id: shoppingList._id,
       title: shoppingList.title,
@@ -14,7 +15,7 @@ const updateShoppingList = createAsyncThunk(
       current: shoppingList.current,
     };
     try {
-      const response = await axios.post('http://localhost:3000/updateShopping', sendData);
+      const response = await axios.post(`${URL}/updateShopping`, sendData);
       return { ...response.data, update: Status.updated };
     } catch (error) {
       console.log(error);

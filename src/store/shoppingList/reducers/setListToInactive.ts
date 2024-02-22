@@ -6,6 +6,7 @@ const setListToInactive = createAsyncThunk(
   'shoppingList/setListToInactive',
 
   async (shoppingList: ShoppingList) => {
+    const URL = process.env.REACT_APP_API_URL;
     const sendData = {
       _id: shoppingList._id,
       title: shoppingList.title,
@@ -14,7 +15,7 @@ const setListToInactive = createAsyncThunk(
       current: false,
     };
     try {
-      await axios.post('http://localhost:3000/updateShopping', sendData);
+      await axios.post(`${URL}/updateShopping`, sendData);
       return {
         _id: '',
         update: Status.initial,
