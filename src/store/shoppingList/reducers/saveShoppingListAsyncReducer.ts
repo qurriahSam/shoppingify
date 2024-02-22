@@ -6,7 +6,7 @@ const saveShoppingList = createAsyncThunk(
   'shoppingList/saveShoppingList',
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async (shoppingList: any): Promise<ShoppingList> => {
-    const URL = process.env.REACT_APP_API_URL;
+    const URL = process.env.API_URL;
     const sendData = {
       title: shoppingList.title,
       list: shoppingList.list,
