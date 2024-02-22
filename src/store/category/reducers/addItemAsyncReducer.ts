@@ -10,7 +10,7 @@ interface INewItem {
 }
 
 const addItem = createAsyncThunk('category/addItem', async (item: INewItem) => {
-  const URL = process.env.API_URL;
+  //const URL = process.env.API_URL;
   const sendData = {
     categoryId: item.categoryId,
     category: item.category,
@@ -22,7 +22,7 @@ const addItem = createAsyncThunk('category/addItem', async (item: INewItem) => {
   };
 
   try {
-    const response = await axios.post(`${URL}`, sendData);
+    const response = await axios.post('https://shoppingify-h8cg.onrender.com', sendData);
     return response.data;
   } catch (error) {
     console.error(error);

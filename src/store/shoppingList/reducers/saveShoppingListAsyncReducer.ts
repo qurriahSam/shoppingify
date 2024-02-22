@@ -6,7 +6,7 @@ const saveShoppingList = createAsyncThunk(
   'shoppingList/saveShoppingList',
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async (shoppingList: any): Promise<ShoppingList> => {
-    const URL = process.env.API_URL;
+    //const URL = process.env.API_URL;
     const sendData = {
       title: shoppingList.title,
       list: shoppingList.list,
@@ -17,10 +17,16 @@ const saveShoppingList = createAsyncThunk(
     try {
       if (shoppingList._id.length > 1) {
         console.log(shoppingList);
-        const response = await axios.post(`${URL}/updateShopping`, shoppingList);
+        const response = await axios.post(
+          `https://shoppingify-h8cg.onrender.com/updateShopping`,
+          shoppingList
+        );
         return { ...response.data, update: Status.updated };
       }
-      const response = await axios.post(`${URL}/newShopping`, sendData);
+      const response = await axios.post(
+        `https://shoppingify-h8cg.onrender.com/newShopping`,
+        sendData
+      );
       return { ...response.data, update: Status.updated };
     } catch (error) {
       console.log(error);

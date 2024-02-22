@@ -6,9 +6,9 @@ const getActiveShoppingList = createAsyncThunk(
   'shoppingList/getActiveShoppingList',
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async () => {
-    const URL = process.env.API_URL;
+    //const URL = process.env.API_URL;
     try {
-      const response = await axios(`${URL}/current`);
+      const response = await axios(`https://shoppingify-h8cg.onrender.com/current`);
       if (response.data === null) {
         return {
           _id: '',

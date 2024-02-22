@@ -2,9 +2,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const getHistory = createAsyncThunk('history/getHistory', async () => {
-  const URL = process.env.API_URL;
+  //const URL = process.env.API_URL;
   try {
-    const response = await axios(`${URL}/history`);
+    const response = await axios(`https://shoppingify-h8cg.onrender.com/history`);
     return response.data;
   } catch (error) {
     console.log(error);
