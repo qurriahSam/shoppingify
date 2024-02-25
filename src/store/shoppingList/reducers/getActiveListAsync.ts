@@ -8,7 +8,7 @@ const getActiveShoppingList = createAsyncThunk(
   async () => {
     //const URL = process.env.REACT_APP_API_URL;
     try {
-      const response = await axios('https://shoppingify-h8cg.onrender.com');
+      const response = await axios('https://shoppingify-h8cg.onrender.com/current');
       if (response.data === null) {
         return {
           _id: '',
