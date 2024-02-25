@@ -60,6 +60,36 @@ function Category({ categories }: { categories: Category }) {
   );
 }
 
+function CategorySkeleton() {
+  function DisplayItemSkeleton() {
+    return (
+      <div className='skeleton flex h-11 w-28 md:w-32 p-3 m-2 rounded-lg shadow-lg justify-between'>
+        <div className='skeleton me-1 p-1 w-16 h-4'></div>
+        <i className='material-symbols-outlined text-sm text-neutral-600'>add</i>
+      </div>
+    );
+  }
+  return (
+    <div className='mt-10'>
+      <div className='skeleton h-5 w-28 mb-3'></div>
+      <div className='flex flex-wrap'>
+        <DisplayItemSkeleton />
+        <DisplayItemSkeleton />
+        <DisplayItemSkeleton />
+        <DisplayItemSkeleton />
+        <DisplayItemSkeleton />
+        <DisplayItemSkeleton />
+        <DisplayItemSkeleton />
+        <DisplayItemSkeleton />
+        <DisplayItemSkeleton />
+        <DisplayItemSkeleton />
+        <DisplayItemSkeleton />
+        <DisplayItemSkeleton />
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   const nuCategories = useSelector((state: RootState) => state.category);
 
@@ -80,10 +110,14 @@ export default function Home() {
         </p>
         <Search />
       </div>
-
-      {nuCategories.data?.map((category) => (
-        <Category key={category._id} categories={category} />
-      ))}
+      {nuCategories.status != Status.updated ? (
+        <>
+          <CategorySkeleton />
+          <CategorySkeleton />
+        </>
+      ) : (
+        nuCategories.data?.map((category) => <Category key={category._id} categories={category} />)
+      )}
     </div>
   );
 }

@@ -1,6 +1,32 @@
 import { useDispatch } from 'react-redux';
-import { ShoppingList } from '../../../types/types';
+import { ShoppingList, Status } from '../../../types/types';
 import { checkoutItemFromList } from '../../../store/shoppingList/shoppingListSlice';
+
+function CheckListSkeleton() {
+  function ItemSkeleton() {
+    return (
+      <div className='flex justify-between py-2'>
+        <div className='flex'>
+          <div className='skeleton h-6 w-6 rounded-full me-4'></div>
+          <div className='skeleton h-4 w-28 mt-1'></div>
+        </div>
+        <div className='skeleton h-7 w-12'></div>
+      </div>
+    );
+  }
+  return (
+    <div>
+      <div className='skeleton h-4 w-20 mb-3'></div>
+      {[1, 2, 3].map((item) => (
+        <ItemSkeleton key={item} />
+      ))}
+      <div className='skeleton h-4 w-20 my-3'></div>
+      {[1, 2].map((item) => (
+        <ItemSkeleton key={item} />
+      ))}
+    </div>
+  );
+}
 
 export default function CheckList({ shoppingList }: { shoppingList: ShoppingList }) {
   const dispatch = useDispatch();
@@ -8,7 +34,9 @@ export default function CheckList({ shoppingList }: { shoppingList: ShoppingList
   return (
     <>
       <div className='w-full'>
-        {shoppingList.list.length === 0 ? (
+        {shoppingList.update != Status.updated ? (
+          <CheckListSkeleton />
+        ) : shoppingList.list.length === 0 ? (
           <p className='text-xs font-medium text-neutral-500 mb-3'>list is empty</p>
         ) : (
           shoppingList.list.map((itemCat) => (
