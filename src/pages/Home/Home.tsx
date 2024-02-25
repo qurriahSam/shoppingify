@@ -73,18 +73,9 @@ function CategorySkeleton() {
     <div className='mt-10'>
       <div className='skeleton h-5 w-28 mb-3'></div>
       <div className='flex flex-wrap'>
-        <DisplayItemSkeleton />
-        <DisplayItemSkeleton />
-        <DisplayItemSkeleton />
-        <DisplayItemSkeleton />
-        <DisplayItemSkeleton />
-        <DisplayItemSkeleton />
-        <DisplayItemSkeleton />
-        <DisplayItemSkeleton />
-        <DisplayItemSkeleton />
-        <DisplayItemSkeleton />
-        <DisplayItemSkeleton />
-        <DisplayItemSkeleton />
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item) => (
+          <DisplayItemSkeleton key={item} />
+        ))}
       </div>
     </div>
   );
@@ -112,6 +103,7 @@ export default function Home() {
       </div>
       {nuCategories.status != Status.updated ? (
         <>
+          <CategorySkeleton />
           <CategorySkeleton />
           <CategorySkeleton />
         </>

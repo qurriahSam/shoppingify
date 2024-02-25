@@ -17,11 +17,11 @@ function CheckListSkeleton() {
   return (
     <div>
       <div className='skeleton h-4 w-20 mb-3'></div>
-      {[1, 2, 3].map((item) => (
+      {[1, 2, 3, 4].map((item) => (
         <ItemSkeleton key={item} />
       ))}
       <div className='skeleton h-4 w-20 my-3'></div>
-      {[1, 2].map((item) => (
+      {[1, 2, 3].map((item) => (
         <ItemSkeleton key={item} />
       ))}
     </div>
