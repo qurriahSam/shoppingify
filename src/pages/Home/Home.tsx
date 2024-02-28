@@ -1,42 +1,12 @@
 import './index.css';
-//import { listItems } from '../../server/data';
 import { Item, Category, Status, ShoppingItemCategory } from '../../types/types';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store/store';
 import { useEffect } from 'react';
 import fetchCategories from '../../store/category/reducers/fetchItemsAsyncReducer';
 import { addItemToList } from '../../store/shoppingList/shoppingListSlice';
-
-function Search() {
-  return (
-    <div className='flex h-fit p-1 rounded-lg shadow border bg-base-100 focus-within:border-primary'>
-      <i className='material-symbols-outlined text-neutral-600'>search</i>
-      <input
-        type='text'
-        placeholder='Search item'
-        className='input input-xs w-full focus:border-0 outlineR focus-within:border-0'
-      />
-    </div>
-  );
-}
-
-function DisplayItem({
-  item,
-  addItemToShoppingList,
-}: {
-  item: Item;
-  addItemToShoppingList: (item: Item) => void;
-}) {
-  return (
-    <button
-      className='btn text-start font-normal flex h-fit w-28 md:w-32 p-1 m-2 rounded-lg shadow-lg text-sm bg-base-100'
-      onClick={() => addItemToShoppingList(item)}
-    >
-      <p className='me-1 p-1 w-16 text-xs'>{item.name}</p>
-      <i className='material-symbols-outlined text-sm text-neutral-600'>add</i>
-    </button>
-  );
-}
+import Search from '../../components/ui/Search/Search';
+import DisplayItem from '../../components/ui/Home/DisplayItem';
 
 function Category({ categories }: { categories: Category }) {
   const dispatch = useDispatch<AppDispatch>();
@@ -83,7 +53,6 @@ function CategorySkeleton() {
 
 export default function Home() {
   const nuCategories = useSelector((state: RootState) => state.category);
-
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
