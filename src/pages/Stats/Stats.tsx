@@ -1,3 +1,3 @@
 export default function Stats() {
-  return <p>Stats page</p>;
+  return <p>coming soon</p>;
 }
