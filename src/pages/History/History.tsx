@@ -5,6 +5,24 @@ import { useEffect } from 'react';
 import getHistory from '../../store/history/reducers/getHistoryAsync';
 import { useNavigate } from 'react-router-dom';
 
+function ListHistorySkeleton() {
+  return (
+    <div className=' grid my-5 h-12 px-5 items-center grid-rows-2 md:grid-rows-none md:grid-cols-4 lg:grid-cols-3 w-full m-2 rounded-lg shadow-lg bg-base-100'>
+      <div className='skeleton h-4 w-1/2 md:col-span-2'></div>
+      <div className='md:col-span-2 lg:col-span-1 flex justify-between text-xs text-start items-center'>
+        <span className='flex text-neutral-200 items-center pe-3'>
+          <i className='material-symbols-outlined me-1'>event_note</i>
+          <div className='skeleton h-4 w-32'></div>
+        </span>
+
+        <div className='skeleton h-4 w-28'></div>
+
+        <i className='material-symbols-outlined text-neutral-200 font-sm'>chevron_right</i>
+      </div>
+    </div>
+  );
+}
+
 function ListHistory({ history }: { history: HistoryListTitle }) {
   const navigate = useNavigate();
   const handleClick = () => navigate(`/history/${history._id}`);
@@ -47,13 +65,11 @@ export default function History() {
     <div>
       <p className='mb-4 text-lg md:mb-0 md:text-2xl font-medium max-w-md'>History</p>
 
-      {listHistory.status === Status.initial ? (
-        <p>loading....</p>
-      ) : (
-        listHistory.historyList.map((history, index) => (
-          <ListHistory key={index} history={history} />
-        ))
-      )}
+      {listHistory.status === Status.initial
+        ? [1, 2, 3, 4, 5, 6, 7].map((num) => <ListHistorySkeleton key={num} />)
+        : listHistory.historyList.map((history, index) => (
+            <ListHistory key={index} history={history} />
+          ))}
     </div>
   );
 }

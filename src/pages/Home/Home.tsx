@@ -35,7 +35,7 @@ function CategorySkeleton() {
     return (
       <div className='skeleton flex h-11 w-28 md:w-32 p-3 m-2 rounded-lg shadow-lg justify-between'>
         <div className='skeleton me-1 p-1 w-16 h-4'></div>
-        <i className='material-symbols-outlined text-sm text-neutral-600'>add</i>
+        <i className='material-symbols-outlined text-sm text-neutral-400'>add</i>
       </div>
     );
   }
