@@ -4,6 +4,7 @@ import { AppDispatch, RootState } from '../../store/store';
 import { useEffect } from 'react';
 import getHistory from '../../store/history/reducers/getHistoryAsync';
 import { useNavigate } from 'react-router-dom';
+import { clearHistoryItems } from '../../store/historyItems/historyItemsSlice';
 
 function ListHistorySkeleton() {
   return (
@@ -25,7 +26,12 @@ function ListHistorySkeleton() {
 
 function ListHistory({ history }: { history: HistoryListTitle }) {
   const navigate = useNavigate();
-  const handleClick = () => navigate(`/history/${history._id}`);
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(clearHistoryItems());
+    navigate(`/history/${history._id}`);
+  };
   return (
     <button
       className='btn text-start grid font-normal h-fit grid-rows-2 md:grid-rows-none md:grid-cols-4 lg:grid-cols-3 w-full m-2 rounded-lg shadow-lg text-sm bg-base-100'
@@ -58,7 +64,9 @@ export default function History() {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(getHistory());
+    if (listHistory.status === Status.initial) {
+      dispatch(getHistory());
+    }
   });
 
   return (
