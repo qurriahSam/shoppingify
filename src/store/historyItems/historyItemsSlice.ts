@@ -32,12 +32,18 @@ const initialState: IHistoryState = {
 const historyItemsSlice = createSlice({
   name: 'historyItems',
   initialState,
-  reducers: {},
+  reducers: {
+    clearHistoryItems: (state) => {
+      state.stateStatus = Status.initial;
+      return state;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getHistoryItems.fulfilled, (state, action: PayloadAction<IHistoryState>) => {
-      return (state = action.payload);
+      return { ...action.payload, stateStatus: Status.updated };
     });
   },
 });
 
+export const { clearHistoryItems } = historyItemsSlice.actions;
 export default historyItemsSlice.reducer;
