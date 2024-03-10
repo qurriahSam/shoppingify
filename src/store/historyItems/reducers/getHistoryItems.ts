@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { Status } from '../../../types/types';
 
 export const getHistoryItems = createAsyncThunk(
   'historyItems/getHistoryItems',
@@ -10,7 +9,7 @@ export const getHistoryItems = createAsyncThunk(
       const response = await axios.post(`https://shoppingify-h8cg.onrender.com/history`, {
         id: id,
       });
-      return { ...response.data, status: Status.updated };
+      return response.data;
     } catch (error) {
       console.log(error);
     }
