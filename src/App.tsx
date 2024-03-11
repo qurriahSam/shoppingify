@@ -15,6 +15,7 @@ function App() {
         <Route path='history' Component={History} />
         <Route path='history/:id' Component={HistShopList} />
         <Route path='statistics' Component={Stats} />
+        <Route path='*' element={<p>Page not found</p>} />
       </Routes>
       {/*       <footer className='text-center mt-12 text-xs'>
         &copy;
