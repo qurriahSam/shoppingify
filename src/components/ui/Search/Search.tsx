@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { AppDispatch, RootState } from '../../../store/store';
 import DisplayItem from '../Home/DisplayItem';
-import { Category, Item, ShoppingItemCategory } from '../../../types/types';
+import { Category, Item, ShoppingItemCategory, Status } from '../../../types/types';
 import { addItemToList } from '../../../store/shoppingList/shoppingListSlice';
 
 function SearchCategory({ categories }: { categories: Category }) {
@@ -47,13 +47,14 @@ export default function Search() {
 
   return (
     <>
-      <div
+      <button
         className='btn w-full lg:w-2/5 p-2 rounded-lg shadow border bg-base-100 justify-start focus-within:border-primary'
         onClick={() => (document?.getElementById('searchModal') as HTMLDialogElement)?.showModal()}
+        disabled={nuCategories.status === Status.loading}
       >
         <i className='material-symbols-outlined text-neutral-600'>search</i>
         <span className='text-neutral-600 font-normal text-xs'>Search</span>
-      </div>
+      </button>
       <dialog id='searchModal' className='modal'>
         <div className='modal-box'>
           <form className='flex' onSubmit={handleSubmit}>

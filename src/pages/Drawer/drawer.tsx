@@ -7,8 +7,6 @@ export default function Drawer() {
   const [newItem, setNewItemDisp] = useState(false);
 
   const toggleNewItem = () => {
-    console.log(newItem);
-
     setNewItemDisp(!newItem);
   };
 

@@ -28,14 +28,14 @@ function CancelComplete({ toggleEditMode }: { toggleEditMode: () => void }) {
       <button
         className='btn btn-link no-underline hover:no-underline'
         onClick={() => dispatch(setListToInactive(shoppingList))}
-        disabled={shoppingList.update === Status.loading}
+        disabled={shoppingList.update === Status.loading || shoppingList.update === Status.initial}
       >
         Cancel
       </button>
       <button
         className='btn btn-primary'
         onClick={updateOrCreateNew}
-        disabled={shoppingList.update === Status.loading}
+        disabled={shoppingList.update === Status.loading || shoppingList.update === Status.initial}
       >
         {shoppingList.update === Status.loading ? (
           <span className='loading loading-dots loading-sm'></span>
@@ -97,7 +97,11 @@ export default function List({ toggleNewItem }: { toggleNewItem: () => void }) {
         <div className='bg-secondary rounded-[2.5rem] relative w-[16rem] h-32'>
           <div className='absolute right-1 top-4 w-[10rem] '>
             <p className='mb-3 font-semibold text-neutral-300'>Did you find what you need?</p>
-            <button className='btn btn-primary btn-sm px-5' onClick={toggleNewItem}>
+            <button
+              className='btn btn-primary btn-sm px-5'
+              onClick={toggleNewItem}
+              disabled={shoppingList.update === Status.loading}
+            >
               Add Item
             </button>
           </div>
