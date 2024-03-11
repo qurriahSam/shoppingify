@@ -28,13 +28,15 @@ function CheckListSkeleton() {
   );
 }
 
+//TODO: add popup to confirm cancling of list
+
 export default function CheckList({ shoppingList }: { shoppingList: ShoppingList }) {
   const dispatch = useDispatch();
 
   return (
     <>
       <div className='w-full'>
-        {shoppingList.update != Status.updated ? (
+        {shoppingList.update === Status.initial ? (
           <CheckListSkeleton />
         ) : shoppingList.list.length === 0 ? (
           <p className='text-xs font-medium text-neutral-500 mb-3'>list is empty</p>
