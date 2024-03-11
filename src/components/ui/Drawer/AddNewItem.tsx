@@ -19,6 +19,11 @@ export default function AddNewItem({ toggleNewItem }: { toggleNewItem: () => voi
     image: '',
     note: '',
   });
+  const [inputError, setInputError] = useState({
+    name: false,
+    category: false,
+    disableForm: false,
+  });
 
   const store = useSelector((state: RootState) => state.category);
 
@@ -40,7 +45,21 @@ export default function AddNewItem({ toggleNewItem }: { toggleNewItem: () => voi
   const submitNewItem = (e: SyntheticEvent) => {
     e.preventDefault();
 
+    if (newItem.name === '' && newItem.category === '') {
+      setInputError(() => ({ ...inputError, name: true, category: true }));
+      return;
+    }
+    if (newItem.name === '') {
+      setInputError(() => ({ ...inputError, name: true }));
+      return;
+    }
+    if (newItem.category === '') {
+      setInputError(() => ({ ...inputError, category: true }));
+      return;
+    }
+    setInputError(() => ({ ...inputError, disableForm: true }));
     dispatch(addItem(newItem)).then(() => {
+      setInputError(() => ({ ...inputError, disableForm: false }));
       toggleNewItem();
     });
 
@@ -60,16 +79,27 @@ export default function AddNewItem({ toggleNewItem }: { toggleNewItem: () => voi
         <div>
           <div className='mb-4'>
             <label htmlFor='name' className='label-text text-xs font-medium'>
-              Name :
+              Name<span className='text-error'>*</span>
             </label>
             <input
               id='name'
               type='text'
               placeholder='Enter a name'
-              className='input input-md placeholder:text-xs w-full border-2 border-base-300 focus:border-primary focus:outline-0 focus-within:outline-0'
+              className={
+                'input input-md placeholder:text-xs w-full border-2 focus:border-primary focus:outline-0 focus-within:outline-0 ' +
+                `${inputError.name ? 'input-error' : 'border-base-300'}`
+              }
               onChange={updateNewItem}
               value={newItem.name}
+              disabled={inputError.disableForm}
             />
+            {inputError.name && (
+              <div className='label'>
+                <span className='label-text-alt text-[10px] text-error font-semibold'>
+                  Name cannot be blank
+                </span>
+              </div>
+            )}
           </div>
           <div className='mb-4'>
             <label htmlFor='note' className='label-text text-xs font-medium'>
@@ -81,6 +111,7 @@ export default function AddNewItem({ toggleNewItem }: { toggleNewItem: () => voi
               className='textarea textarea-md placeholder:text-xs w-full border-2 border-base-300 focus:border-primary focus:outline-0 focus-within:outline-0'
               onChange={updateNewItem}
               value={newItem.note}
+              disabled={inputError.disableForm}
             />
           </div>
           <div className='mb-4'>
@@ -94,29 +125,53 @@ export default function AddNewItem({ toggleNewItem }: { toggleNewItem: () => voi
               onChange={updateNewItem}
               value={newItem.image}
               className='input input-md placeholder:text-xs w-full border-2 border-base-300 focus:border-primary focus:outline-0 focus-within:outline-0'
+              disabled={inputError.disableForm}
             />
           </div>
           <div>
             <label htmlFor='category' className='label-text text-xs font-medium'>
-              Category:
+              Category<span className='text-error'>*</span>
             </label>
 
             <select
               id='category'
               onChange={updateCategory}
               value={newItem.category}
-              className='select select-md w-full text-xs max-w-xs border-2 border-base-300 focus:border-primary focus:outline-0 focus-within:outline-0'
+              className={
+                'select select-md w-full text-xs max-w-xs border-2 focus:border-primary focus:outline-0 focus-within:outline-0 ' +
+                `${inputError.category ? 'input-error' : 'border-base-300'}`
+              }
+              disabled={inputError.disableForm}
             >
               <option>--Select Category--</option>
               {store.data.map((catGroup) => {
                 return <option key={catGroup._id}>{catGroup.category}</option>;
               })}
             </select>
+            {inputError.category && (
+              <div className='label'>
+                <span className='label-text-alt text-[10px] text-error font-bold'>
+                  Select category
+                </span>
+              </div>
+            )}
           </div>
         </div>
-        <div className='flex mb-5 justify-center'>
-          <button className='btn btn-link no-underline hover:no-underline'>cancel</button>
-          <button className='btn btn-md btn-primary'>Save</button>
+        <div className='flex mb-5 justify-center p-4'>
+          <button
+            className='btn btn-link no-underline me-6 hover:no-underline'
+            onClick={(e) => e.preventDefault()}
+            disabled={inputError.disableForm}
+          >
+            cancel
+          </button>
+          <button className='btn btn-md btn-primary' disabled={inputError.disableForm}>
+            {inputError.disableForm ? (
+              <span className='loading loading-dots loading-md'></span>
+            ) : (
+              'Save'
+            )}
+          </button>
         </div>
       </form>
     </div>

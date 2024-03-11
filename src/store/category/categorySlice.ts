@@ -37,9 +37,6 @@ const categorySlice = createSlice({
       });
 
     builder
-      .addCase(addItem.pending, (state) => {
-        return (state = { ...state, status: Status.loading });
-      })
       .addCase(addItem.fulfilled, (state, action) => {
         const findCat = state.data.find((category) => category._id === action.payload._id);
 
