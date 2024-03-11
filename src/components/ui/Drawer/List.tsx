@@ -24,9 +24,9 @@ function CancelComplete({ toggleEditMode }: { toggleEditMode: () => void }) {
   };
 
   return (
-    <div className='flex justify-center'>
+    <div className='flex justify-center pt-4'>
       <button
-        className='btn btn-link no-underline hover:no-underline'
+        className='btn btn-link no-underline hover:no-underline me-6'
         onClick={() => dispatch(setListToInactive(shoppingList))}
         disabled={shoppingList.update === Status.loading || shoppingList.update === Status.initial}
       >
