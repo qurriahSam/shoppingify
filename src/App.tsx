@@ -16,13 +16,13 @@ function App() {
         <Route path='history/:id' Component={HistShopList} />
         <Route path='statistics' Component={Stats} />
       </Routes>
-      <footer className='text-center mt-12 text-xs'>
+      {/*       <footer className='text-center mt-12 text-xs'>
         &copy;
         <a href='https://github.com/qurriahSam' className='text-blue-600'>
           Sam_Kuria{' '}
         </a>
         2024
-      </footer>
+      </footer> */}
     </SiteWrapper>
   );
 }
