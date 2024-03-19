@@ -3,6 +3,7 @@ import categoryReducer from './category/categorySlice';
 import shoppingListReducer from './shoppingList/shoppingListSlice';
 import historyReducer from './history/historySlice';
 import historyItemsReducer from './historyItems/historyItemsSlice';
+import statsReducer from './stats/statsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     shoppingList: shoppingListReducer,
     history: historyReducer,
     historyItems: historyItemsReducer,
+    stats: statsReducer,
   },
 });
 
