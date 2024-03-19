@@ -12,7 +12,8 @@ const fetchStats = createAsyncThunk(
       if (response.data === null) {
         return {
           status: Status.initial,
-          data: [],
+          categories: [],
+          months: {},
         };
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -70,9 +71,7 @@ const fetchStats = createAsyncThunk(
           });
         });
       });
-
-      console.log({ categories: cats, months: monthsData });
-      return { categories: cats, months: monthsData };
+      return { status: Status.updated, categories: cats, months: monthsData };
     } catch (error) {
       console.log(error);
     }
