@@ -15,7 +15,7 @@ function App() {
         <Route index path='/' Component={Home} />
         <Route path='history' Component={History} />
         <Route path='history/:id' Component={HistShopList} />
-        <Route path='statistics' Component={Stats} />
+        <Route path='stats' Component={Stats} />
         <Route path='*' Component={PageNotFound} />
       </Routes>
       {/*       <footer className='text-center mt-12 text-xs'>
