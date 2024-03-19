@@ -38,10 +38,10 @@ export default function CheckList({ shoppingList }: { shoppingList: ShoppingList
       <div className='w-full'>
         {shoppingList.update === Status.initial ? (
           <CheckListSkeleton />
-        ) : shoppingList.list.length === 0 ? (
+        ) : shoppingList.list?.length === 0 ? (
           <p className='text-xs font-medium text-neutral-500 mb-3'>list is empty</p>
         ) : (
-          shoppingList.list.map((itemCat) => (
+          shoppingList.list?.map((itemCat) => (
             <div key={itemCat._id}>
               <p className='text-xs font-medium text-neutral-500 mb-3'>{itemCat.category}</p>
               {itemCat.items.map((item) => (
