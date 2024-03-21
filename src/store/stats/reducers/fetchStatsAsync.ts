@@ -13,7 +13,7 @@ const fetchStats = createAsyncThunk(
         return {
           status: Status.initial,
           categories: [],
-          months: {},
+          months: [],
         };
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
