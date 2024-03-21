@@ -8,7 +8,7 @@ const fetchStats = createAsyncThunk(
   async () => {
     //const URL = process.env.REACT_APP_API_URL;
     try {
-      const response = await axios('http://localhost:3000/stats');
+      const response = await axios('https://shoppingify-h8cg.onrender.com/stats');
       if (response.data === null) {
         return {
           status: Status.initial,
@@ -20,34 +20,34 @@ const fetchStats = createAsyncThunk(
       const cats = response.data.categories.map((cat: any) => ({ ...cat, items: {} }));
 
       const months = [
-        'January',
-        'February',
-        'March',
-        'April',
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
         'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
       ];
 
-      const monthsData: { [key: string]: number } = {
-        January: 0,
-        February: 0,
-        March: 0,
-        April: 0,
-        May: 0,
-        June: 0,
-        July: 0,
-        August: 0,
-        September: 0,
-        October: 0,
-        November: 0,
-        December: 0,
-      };
+      let monthsData: { month: string; count: number }[] = [
+        { month: 'Jan', count: 0 },
+        { month: 'Feb', count: 0 },
+        { month: 'Mar', count: 0 },
+        { month: 'Apr', count: 0 },
+        { month: 'May', count: 0 },
+        { month: 'Jun', count: 0 },
+        { month: 'Jul', count: 0 },
+        { month: 'Aug', count: 0 },
+        { month: 'Sep', count: 0 },
+        { month: 'Oct', count: 0 },
+        { month: 'Nov', count: 0 },
+        { month: 'Dec', count: 0 },
+      ];
 
       response.data.shoppingLists.forEach((shoppingList: ShoppingList) => {
         const date = new Date(shoppingList.date);
@@ -56,7 +56,13 @@ const fetchStats = createAsyncThunk(
         shoppingList.list.forEach((shoppingItemCat: ShoppingItemCategory) => {
           shoppingItemCat.items.forEach((item) => {
             if (item.complete) {
-              monthsData[month] += item.count;
+              monthsData = monthsData.map((m) => {
+                if (m.month === month.slice(0, 3)) {
+                  m.count += item.count;
+                  return m;
+                }
+                return m;
+              });
               cats.forEach((cat: { category: string }, index: number) => {
                 if (cat.category === shoppingItemCat.category) {
                   if (cats[index].items[`${item.name}`]) {

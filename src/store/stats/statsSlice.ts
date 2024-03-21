@@ -13,13 +13,13 @@ export interface Stat {
 interface StatsState {
   status: Status;
   categories: Stat[];
-  months: { [key: string]: number };
+  months: { month: string; count: number }[];
 }
 
 const initialState: StatsState = {
   status: Status.initial,
   categories: [],
-  months: {},
+  months: [],
 };
 
 const statsSlice = createSlice({
