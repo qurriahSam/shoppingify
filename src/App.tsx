@@ -7,25 +7,20 @@ import History from './pages/History/History';
 import Stats from './pages/Stats/Stats';
 import HistShopList from './components/ui/History/HistShopList';
 import PageNotFound from './pages/pageNotFound/PageNotFound';
+import LandingPage from './pages/LandingPage/LandingPage';
 
 function App() {
   return (
-    <SiteWrapper>
-      <Routes>
-        <Route index path='/' Component={Home} />
+    <Routes>
+      <Route path='/app' Component={SiteWrapper}>
+        <Route index Component={Home} />
         <Route path='history' Component={History} />
         <Route path='history/:id' Component={HistShopList} />
         <Route path='statistics' Component={Stats} />
-        <Route path='*' Component={PageNotFound} />
-      </Routes>
-      {/*       <footer className='text-center mt-12 text-xs'>
-        &copy;
-        <a href='https://github.com/qurriahSam' className='text-blue-600'>
-          Sam_Kuria{' '}
-        </a>
-        2024
-      </footer> */}
-    </SiteWrapper>
+      </Route>
+      <Route path='/' Component={LandingPage} />
+      <Route path='*' Component={PageNotFound} />
+    </Routes>
   );
 }
 
