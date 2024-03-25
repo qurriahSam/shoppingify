@@ -1,9 +1,10 @@
-import { ReactNode, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import SideNav from './ui/SideNav/SideNav';
 import Drawer from '../pages/Drawer/drawer';
+import { Outlet } from 'react-router-dom';
 //import DrawerMob from './shopping/drawerMob';
 
-export default function SiteWrapper({ children }: { children: ReactNode }) {
+export default function SiteWrapper() {
   const [isMobile, setIsMobile] = useState(false);
   const [drawerToggle, setDrawerToggle] = useState(false);
 
@@ -32,7 +33,7 @@ export default function SiteWrapper({ children }: { children: ReactNode }) {
           !drawerToggle ? 'w-full' : 'hidden'
         }`}
       >
-        {children}
+        <Outlet />
       </div>
       {isMobile ? (
         <div
