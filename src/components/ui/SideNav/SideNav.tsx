@@ -9,12 +9,12 @@ type ToggleDrawer = () => void;
 export default function SideNav({ toggleDrawer }: { toggleDrawer: ToggleDrawer }) {
   return (
     <div className='w-16 md:w-20 h-screen flex flex-col justify-between py-4'>
-      <Link to='/' className='ps-2 md:ps-4'>
+      <Link to='/app' className='ps-2 md:ps-4'>
         <img src={logo} alt='logo' />
       </Link>
       <ul className='menu py-4'>
         <li>
-          <Link to='/' className='tooltip tooltip-right' data-tip='Items'>
+          <Link to='/app' className='tooltip tooltip-right' data-tip='Items'>
             <i className='material-symbols-outlined'>list</i>
           </Link>
         </li>

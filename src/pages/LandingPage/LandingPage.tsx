@@ -1,6 +1,10 @@
 import listImg from '../../assets/list.png';
 import pointList from '../../assets/guyPoint.png';
+import { useNavigate } from 'react-router-dom';
+
 function Header() {
+  const navigate = useNavigate();
+  const handleClick = () => navigate('/app');
   return (
     <div className='navbar bg-base-100 md:px-12'>
       <div className='navbar-start'>
@@ -52,7 +56,9 @@ function Header() {
         </ul>
       </div>
       <div className='navbar-end'>
-        <a className='btn btn-primary btn-sm'>Go To App</a>
+        <button className='btn btn-primary btn-sm' onClick={handleClick}>
+          Go To App
+        </button>
       </div>
     </div>
   );
