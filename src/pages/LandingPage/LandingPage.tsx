@@ -165,7 +165,7 @@ function Reviews() {
   ];
   function Review({ person }: { person: { name: string; img: string; comment: string } }) {
     return (
-      <div className='card w-96 bg-base-100 shadow-xl md:mr-7 mb-10'>
+      <div className='card md:w-2/4 bg-base-100 shadow-xl md:mr-7 mb-10'>
         <div className='card-body'>
           <div className='flex mb-2'>
             <img className='rounded-full w-14 h-14 mr-3' src={person.img} alt='Profile picture' />
