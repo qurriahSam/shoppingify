@@ -34,6 +34,13 @@ export default function SiteWrapper() {
         }`}
       >
         <Outlet />
+        <footer className='text-center mt-12 text-xs'>
+          &copy;
+          <a href='https://github.com/qurriahSam' className='text-blue-600'>
+            Sam_Kuria{' '}
+          </a>
+          2024
+        </footer>
       </div>
       {isMobile ? (
         <div
