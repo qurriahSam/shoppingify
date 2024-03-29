@@ -61,9 +61,9 @@
 
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
-- [Angular](https://angular.io)
-- [Angular-Material](https://material.angular.io)
-- [Tailwind](https://tailwindcss.com/)
+- [React](https://react.dev)
+- [Daisy UI](https://daisyui.com/)
+- [TailwindCSS](https://tailwindcss.com/)
 - [Material-Icons](https://fonts.google.com/)
 
 ## 🚀 Getting Started
@@ -89,8 +89,17 @@ $ npm run dev
 
 Ready-made dark and light themes are available in `Shoppingify`
 
-<img width="45%" alt="Shoppingify" src="https://raw.githubusercontent.com/qurriahSam/shoppingify/main/src/assets/light.png"/>
-<img width="45%" alt="Shoppingify" src="https://raw.githubusercontent.com/qurriahSam/shoppingify/main/src/assets/dark.png"/>
+<img width="60%" alt="Shoppingify" src="https://raw.githubusercontent.com/qurriahSam/shoppingify/main/src/assets/light.png"/>
+<img width="60%" alt="Shoppingify" src="https://raw.githubusercontent.com/qurriahSam/shoppingify/main/src/assets/dark.png"/>
+
+## 🏆 Credits
+
+A huge thank you to everyone who is helping to improve Shoppingify. Thanks to you, the project can evolve!
+
+### Contributors
+
+- [Ivy Masicha](https://github.com/masichaivy)
+- [Sam Kuria](https://github.com/qurriahSam)
 
 ## Contact
 
