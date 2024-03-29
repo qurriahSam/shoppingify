@@ -11,7 +11,7 @@
    <a target="_blank" href="https://github.com/qurriahSam/shoppingify"><img src="https://img.shields.io/github/last-commit/qurriahSam/shoppingify?logo=github&color=609966&logoColor=fff" alt="Last commit"/></a>
    <a href="https://github.com/qurriahSam/shoppingify/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-609966?logo=opensourceinitiative&logoColor=fff" alt="License MIT"/></a>
      <br/><br/>
-  <img src="https://raw.githubusercontent.com/qurriahSam/shoppingify/main/src/assets/screenshot.png" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" alt="Shoppingify" width="70%"/>
+  <img src="https://raw.githubusercontent.com/qurriahSam/shoppingify/main/src/assets/screenshot.png" alt="Shoppingify" width="70%"/>
   </p>
 
 <details>
