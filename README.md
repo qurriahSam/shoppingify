@@ -23,6 +23,7 @@
   -[Node](#node)
 -[Credits](#credits)
   -[Contributors](#contributors)
+-[License](#license)
 - [Contact](#contact)
 </details>
 
@@ -102,6 +103,10 @@ Ready-made dark and light themes are available in `Shoppingify`
 
 - [Ivy Masicha](https://github.com/masichaivy)
 - [Sam Kuria](https://github.com/qurriahSam)
+
+## 📄 License
+
+This app is open-sourced software licensed under the [MIT license](https://github.com/qurriahSam/shoppingify/blob/main/LICENSE).
 
 ## Contact
 
