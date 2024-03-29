@@ -2,16 +2,16 @@
 
 <h1 align="center">Shoppingify</h1>
 <p align="center">
-  <i>Shoppingify allows you take your shopping list wherever you go.</i>
+  <i>Take your shopping list wherever you go.</i>
   <br/><br/>
-  <img width="130" alt="Shoppingify" src="https://raw.githubusercontent.com/qurriahSam/shoppingify/main/src/assets/logo.svg"/>
+  <img width="100" alt="Shoppingify" src="https://raw.githubusercontent.com/qurriahSam/shoppingify/main/src/assets/logo.svg"/>
   <br/><br/>
   <b><a href="https://shoppingify-lovat.vercel.app">Demo</a></b> | <b><a href="https://github.com/qurriahSam/shoppingify">GitHub</a></b>
   <br/><br/>
    <a target="_blank" href="https://github.com/qurriahSam/shoppingify"><img src="https://img.shields.io/github/last-commit/qurriahSam/shoppingify?logo=github&color=609966&logoColor=fff" alt="Last commit"/></a>
    <a href="https://github.com/qurriahSam/shoppingify/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-609966?logo=opensourceinitiative&logoColor=fff" alt="License MIT"/></a>
      <br/><br/>
-  <img src="https://raw.githubusercontent.com/qurriahSam/shoppingify/main/src/assets/screenshot.png" alt="Shoppingify" width="70%"/>
+  <img src="https://raw.githubusercontent.com/qurriahSam/shoppingify/main/src/assets/screenshot.png" alt="Shoppingify" width="85%"/>
   </p>
 
 <details>
@@ -29,6 +29,8 @@
 <!-- OVERVIEW -->
 
 ## Overview
+
+Shoppingify is designed to streamline every aspect of your grocery trips, from list creation and item management to insightful statistics and seamless collaboration.
 
 ## 🎯 Features
 
@@ -57,7 +59,7 @@
 
 - 🔍 **Search Functionality**: Easily find items using the search feature for added convenience.
 
-## Built With
+## ⛏ Built With
 
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
