@@ -18,11 +18,11 @@
   <summary><b>Table of Contents</b></summary>
 
 - [Features](#-features)
-
 - [Built With](#built-with)
-
-- [Features](#features)
-- [How to use](#how-to-use)
+- [Getting Started](#getting-started)
+  -[Node](#node)
+-[Credits](#credits)
+  -[Contributors](#contributors)
 - [Contact](#contact)
 </details>
 
@@ -96,7 +96,7 @@ Ready-made dark and light themes are available in `Shoppingify`
 
 ## 🏆 Credits
 
-A huge thank you to everyone who is helping to improve Shoppingify. Thanks to you, the project can evolve!
+[DevChallenges](https://legacy.devchallenges.io/challenges/mGd5VpbO4JnzU6I9l96x) for the project challenge.
 
 ### Contributors
 
