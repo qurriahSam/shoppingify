@@ -4,7 +4,7 @@
 <p align="center">
   <i>Shoppingify allows you take your shopping list wherever you go.</i>
   <br/><br/>
-  <img width="130" alt="Mafl" src="https://raw.githubusercontent.com/qurriahSam/shoppingify/main/src/assets/logo.svg"/>
+  <img width="130" alt="Shoppingify" src="https://raw.githubusercontent.com/qurriahSam/shoppingify/main/src/assets/logo.svg"/>
   <br/><br/>
   <b><a href="https://shoppingify-lovat.vercel.app">Demo</a></b> | <b><a href="https://github.com/qurriahSam/shoppingify">GitHub</a></b>
   <br/><br/>
@@ -88,6 +88,9 @@ $ npm run dev
 ## 🎨 Themes
 
 Ready-made dark and light themes are available in `Shoppingify`
+
+<img width="45%" alt="Shoppingify" src="https://raw.githubusercontent.com/qurriahSam/shoppingify/main/src/assets/light.png"/>
+<img width="45%" alt="Shoppingify" src="https://raw.githubusercontent.com/qurriahSam/shoppingify/main/src/assets/dark.png"/>
 
 ## Contact
 
