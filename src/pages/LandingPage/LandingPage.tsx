@@ -5,6 +5,7 @@ import blk from '../../assets/curtis-powell-b-guy.jpg';
 
 import pointList from '../../assets/guyPoint.png';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 function Header() {
   const navigate = useNavigate();
@@ -72,18 +73,31 @@ function Hero() {
   return (
     <div className='hero min-h-screen md:px-12'>
       <div className='hero-content flex-col lg:flex-row-reverse'>
-        <img src={listImg} className='max-w-lg md:max-w-2xl mb-10' />
-        <div>
-          <h1 className='text-5xl font-bold font-["Playfair_display"] leading-tight'>
-            Take your shopping list wherever you go.
-          </h1>
-          <p className='py-6'>
-            Streamline your grocery shopping with our intuitive shopping list app. Easily create and
-            organize lists. Never forget an item again with customizable categories. Simplify your
-            errands and stay organized effortlessly.
-          </p>
-          <button className='btn btn-primary btn-wide'>Get Started</button>
-        </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ type: 'tween', duration: 0.3, delay: 0.2, ease: 'easeIn' }}
+          viewport={{ once: true }}
+        >
+          <img src={listImg} className='max-w-lg md:max-w-2xl mb-10' />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <div>
+            <h1 className='text-5xl font-bold font-["Playfair_display"] leading-tight'>
+              Take your shopping list wherever you go.
+            </h1>
+            <p className='py-6'>
+              Streamline your grocery shopping with our intuitive shopping list app. Easily create
+              and organize lists. Never forget an item again with customizable categories. Simplify
+              your errands and stay organized effortlessly.
+            </p>
+            <button className='btn btn-primary btn-wide'>Get Started</button>
+          </div>
+        </motion.div>
       </div>
     </div>
   );
@@ -93,49 +107,85 @@ function About() {
   return (
     <div className='hero min-h-screen'>
       <div className='hero-content flex-col lg:flex-row'>
-        <img src={pointList} className='max-w-md' />
+        <motion.div
+          initial={{ x: -200, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ type: 'tween', duration: 0.5, delay: 0.2, ease: 'easeInOut' }}
+          viewport={{ once: true }}
+        >
+          <img src={pointList} className='max-w-md' />
+        </motion.div>
         <div className='md:ml-12 md:w-2/5'>
-          <h1 className='text-3xl font-bold font-["Playfair_display"]'>What will you get ?</h1>
-          <p className='py-6'>
-            Welcome to our innovative shopping list app, designed to revolutionize your grocery
-            shopping experience.
-          </p>
-          <div className='card card-side shadow-xl p-3 items-center'>
-            <span className='material-symbols-rounded text-4xl font-bold mr-2 text-success'>
-              task_alt
-            </span>
-            <div className='card-body p-2'>
-              <h2 className='card-title md:text-sm'>Efficiency</h2>
-              <p className='md:text-xs'>
-                Our app streamlines the shopping process, saving you time and effort by allowing you
-                to create and organize your shopping lists quickly and easily.
-              </p>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ type: 'tween', duration: 0.5, delay: 0.2, ease: 'easeInOut' }}
+            viewport={{ once: true }}
+          >
+            <h1 className='text-3xl font-bold font-["Playfair_display"]'>What will you get ?</h1>
+            <p className='py-6'>
+              Welcome to our innovative shopping list app, designed to revolutionize your grocery
+              shopping experience.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ type: 'tween', duration: 0.3, delay: 0.2, ease: 'easeIn' }}
+            viewport={{ once: true }}
+          >
+            <div className='card card-side shadow-xl p-3 items-center'>
+              <span className='material-symbols-rounded text-4xl font-bold mr-2 text-success'>
+                task_alt
+              </span>
+
+              <div className='card-body p-2'>
+                <h2 className='card-title md:text-sm'>Efficiency</h2>
+                <p className='md:text-xs'>
+                  Our app streamlines the shopping process, saving you time and effort by allowing
+                  you to create and organize your shopping lists quickly and easily.
+                </p>
+              </div>
             </div>
-          </div>
-          <div className='card card-side shadow-xl p-3 items-center mt-4'>
-            <span className='material-symbols-rounded text-4xl font-bold mr-2 text-success'>
-              task_alt
-            </span>
-            <div className='card-body p-2'>
-              <h2 className='card-title md:text-sm'>Customization</h2>
-              <p className='md:text-xs'>
-                Tailor your lists to your specific needs with customizable categories and item
-                suggestions, ensuring that you never miss an essential item again.
-              </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ type: 'tween', duration: 0.3, delay: 0.25, ease: 'easeIn' }}
+            viewport={{ once: true }}
+          >
+            <div className='card card-side shadow-xl p-3 items-center mt-4'>
+              <span className='material-symbols-rounded text-4xl font-bold mr-2 text-success'>
+                task_alt
+              </span>
+              <div className='card-body p-2'>
+                <h2 className='card-title md:text-sm'>Customization</h2>
+                <p className='md:text-xs'>
+                  Tailor your lists to your specific needs with customizable categories and item
+                  suggestions, ensuring that you never miss an essential item again.
+                </p>
+              </div>
             </div>
-          </div>
-          <div className='card card-side shadow-xl p-3 items-center mt-4'>
-            <span className='material-symbols-rounded text-4xl font-bold mr-2 text-success'>
-              task_alt
-            </span>
-            <div className='card-body p-2'>
-              <h2 className='card-title md:text-sm'>Budgeting</h2>
-              <p className='md:text-xs'>
-                Keep track of your spending by setting budget limits and monitoring your expenses
-                within the app, helping you to stick to your financial goals while shopping.
-              </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ type: 'tween', duration: 0.3, delay: 0.3, ease: 'easeIn' }}
+            viewport={{ once: true }}
+          >
+            <div className='card card-side shadow-xl p-3 items-center mt-4'>
+              <span className='material-symbols-rounded text-4xl font-bold mr-2 text-success'>
+                task_alt
+              </span>
+              <div className='card-body p-2'>
+                <h2 className='card-title md:text-sm'>Budgeting</h2>
+                <p className='md:text-xs'>
+                  Keep track of your spending by setting budget limits and monitoring your expenses
+                  within the app, helping you to stick to your financial goals while shopping.
+                </p>
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
