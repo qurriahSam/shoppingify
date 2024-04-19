@@ -66,7 +66,7 @@ export default function HistShopList() {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  const handleClick = () => navigate('/history');
+  const handleClick = () => navigate('/app/history');
 
   useEffect(() => {
     if (id && historyListItems.stateStatus === Status.initial) {
