@@ -30,7 +30,7 @@ function ListHistory({ history }: { history: HistoryListTitle }) {
 
   const handleClick = () => {
     dispatch(clearHistoryItems());
-    navigate(`/history/${history._id}`);
+    navigate(`${history._id}`);
   };
   return (
     <button
