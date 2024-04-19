@@ -6,7 +6,7 @@
   <br/><br/>
   <img width="100" alt="Shoppingify" src="https://raw.githubusercontent.com/qurriahSam/shoppingify/main/src/assets/logo.svg"/>
   <br/><br/>
-  <b><a href="https://shoppingify-lovat.vercel.app">Demo</a></b> | <b><a href="https://github.com/qurriahSam/shoppingify">GitHub</a></b>
+  <b><a href="https://shoppingify-lovat.vercel.app">Demo</a></b> | <b><a href="https://github.com/qurriahSam/shoppingify">GitHub</a></b> | <b><a href="https://github.com/qurriahSam/shoppingify-back">Backend</a></b>
   <br/><br/>
    <a target="_blank" href="https://github.com/qurriahSam/shoppingify"><img src="https://img.shields.io/github/last-commit/qurriahSam/shoppingify?logo=github&color=609966&logoColor=fff" alt="Last commit"/></a>
    <a href="https://github.com/qurriahSam/shoppingify/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-609966?logo=opensourceinitiative&logoColor=fff" alt="License MIT"/></a>
@@ -19,11 +19,7 @@
 
 - [Features](#-features)
 - [Built With](#built-with)
-- [Getting Started](#getting-started)
-  -[Node](#node)
--[Credits](#credits)
-  -[Contributors](#contributors)
--[License](#license)
+- [Getting Started](#getting-started) -[Node](#node) -[Credits](#credits) -[Contributors](#contributors) -[License](#license)
 - [Contact](#contact)
 </details>
 
