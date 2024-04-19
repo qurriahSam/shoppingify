@@ -2,11 +2,16 @@ import { useState, useEffect } from 'react';
 import SideNav from './ui/SideNav/SideNav';
 import Drawer from '../pages/Drawer/drawer';
 import { Outlet } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/store';
+import { Status } from '../types/types';
+import RenderAlert from './RenderAlert';
 //import DrawerMob from './shopping/drawerMob';
 
 export default function SiteWrapper() {
   const [isMobile, setIsMobile] = useState(false);
   const [drawerToggle, setDrawerToggle] = useState(false);
+  const nuCategories = useSelector((state: RootState) => state.category);
 
   useEffect(() => {
     function handleResize() {
@@ -33,6 +38,7 @@ export default function SiteWrapper() {
           !drawerToggle ? 'w-full' : 'hidden'
         }`}
       >
+        {nuCategories.status === Status.loading && <RenderAlert />}
         <Outlet />
         <footer className='text-center mt-12 text-xs'>
           &copy;
