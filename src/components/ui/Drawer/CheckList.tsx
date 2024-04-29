@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { ShoppingList, Status } from '../../../types/types';
 import { checkoutItemFromList } from '../../../store/shoppingList/shoppingListSlice';
+import shopping_person from '../../../assets/shopping_prsn.svg';
 
 function CheckListSkeleton() {
   function ItemSkeleton() {
@@ -39,7 +40,12 @@ export default function CheckList({ shoppingList }: { shoppingList: ShoppingList
         {shoppingList.update === Status.initial ? (
           <CheckListSkeleton />
         ) : shoppingList.list?.length === 0 ? (
-          <p className='text-xs font-medium text-neutral-500 mb-3'>list is empty</p>
+          <div className='h-72 flex flex-col justify-between'>
+            <p className='text-xs font-medium text-neutral-500 mb-3'>list is empty</p>
+            <div className='mt-18'>
+              <img src={shopping_person} alt='' />
+            </div>
+          </div>
         ) : (
           shoppingList.list?.map((itemCat) => (
             <div key={itemCat._id}>
