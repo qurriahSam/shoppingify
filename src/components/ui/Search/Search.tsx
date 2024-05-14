@@ -1,35 +1,11 @@
 import { ChangeEvent, SyntheticEvent } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-import { AppDispatch, RootState } from '../../../store/store';
-import DisplayItem from '../Home/DisplayItem';
-import { Category, Item, ShoppingItemCategory, Status } from '../../../types/types';
-import { addItemToList } from '../../../store/shoppingList/shoppingListSlice';
+import { RootState } from '../../../store/store';
+import { Status } from '../../../types/types';
+import SearchCategory from './SearchCategory';
 
-function SearchCategory({ categories }: { categories: Category }) {
-  const [searchParams] = useSearchParams();
-  const dispatch = useDispatch<AppDispatch>();
 
-  const searchTerm = searchParams.get('item') || '';
-
-  const addItemToShoppingList = (item: Item) => {
-    const itemWithCategory: ShoppingItemCategory = {
-      _id: categories._id,
-      category: categories.category,
-      items: [{ _id: item._id, name: item.name, count: 1, complete: false }],
-    };
-    dispatch(addItemToList(itemWithCategory));
-  };
-  return (
-    <div className='flex flex-wrap'>
-      {categories.items
-        .filter((item) => item.name.toLowerCase().includes(searchTerm.toLowerCase()))
-        .map((item, index) => (
-          <DisplayItem key={index} item={item} addItemToShoppingList={addItemToShoppingList} />
-        ))}
-    </div>
-  );
-}
 
 export default function Search() {
   const [searchParams, setSearchParams] = useSearchParams();
