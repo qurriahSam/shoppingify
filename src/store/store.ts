@@ -1,9 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit';
-import categoryReducer from './category/categorySlice';
-import shoppingListReducer from './shoppingList/shoppingListSlice';
-import historyReducer from './history/historySlice';
-import historyItemsReducer from './historyItems/historyItemsSlice';
-import statsReducer from './stats/statsSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import categoryReducer from "./category/categorySlice";
+import shoppingListReducer from "./shoppingList/shoppingListSlice";
+import historyReducer from "./history/historySlice";
+import historyItemsReducer from "./historyItems/historyItemsSlice";
+import statsReducer from "./stats/statsSlice";
+import authReducer from "./auth/authSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     history: historyReducer,
     historyItems: historyItemsReducer,
     stats: statsReducer,
+    auth: authReducer,
   },
 });
 
