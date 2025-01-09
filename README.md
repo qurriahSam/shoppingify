@@ -93,7 +93,7 @@ Ready-made dark and light themes are available in `Shoppingify`
 
 ## 🏆 Credits
 
-[DevChallenges](https://legacy.devchallenges.io/challenges/mGd5VpbO4JnzU6I9l96x) for the project challenge.
+<!-- [DevChallenges](https://legacy.devchallenges.io/challenges/mGd5VpbO4JnzU6I9l96x) for the project challenge. -->
 
 ### Contributors
 
