@@ -9,6 +9,7 @@ import HistShopList from "./components/ui/History/HistShopList";
 import PageNotFound from "./pages/pageNotFound/PageNotFound";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="statistics" Component={Stats} />
       </Route>
       <Route path="login" Component={Login} />
+      <Route path="register" Component={Register} />
       <Route path="/" Component={LandingPage} />
       <Route path="*" Component={PageNotFound} />
     </Routes>
