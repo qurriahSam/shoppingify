@@ -11,18 +11,76 @@ export default function Register() {
     confirmPassword: "",
   });
 
+  const [errors, setErrors] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+
   const dispatch = useDispatch<AppDispatch>();
 
   const updateUserDetails = (e: ChangeEvent<HTMLInputElement>) => {
     const key = e.target.id;
     const value = e.target.value;
     setUserDetails({ ...userDetails, [key]: value });
+    validateField(key, value);
+  };
+
+  const validateField = (key: string, value: string) => {
+    let error = "";
+
+    switch (key) {
+      case "email": {
+        const emailRegex = /^[^s@]+@[^s@]+.[^s@]+$/;
+        if (!value.trim()) error = "Email is required.";
+        else if (!emailRegex.test(value)) error = "Enter a valid email.";
+        break;
+      }
+      case "username":
+        if (!value.trim()) error = "Username is required.";
+        else if (value.length < 3)
+          error = "Username must be at least 3 characters.";
+        break;
+      case "password":
+        if (!value.trim()) error = "Password is required.";
+        else if (value.length < 6)
+          error = "Password must be at least 6 characters.";
+        break;
+      case "confirmPassword":
+        if (!value.trim()) error = "Confirm your password.";
+        else if (value !== userDetails.password)
+          error = "Passwords do not match.";
+        break;
+      default:
+        break;
+    }
+
+    setErrors((prevErrors) => ({ ...prevErrors, [key]: error }));
+  };
+
+  const validateForm = () => {
+    const { email, username, password, confirmPassword } = userDetails;
+
+    validateField("email", email);
+    validateField("username", username);
+    validateField("password", password);
+    validateField("confirmPassword", confirmPassword);
+
+    return (
+      !errors.email &&
+      !errors.username &&
+      !errors.password &&
+      !errors.confirmPassword
+    );
   };
 
   const registerNewUser = (e: SyntheticEvent) => {
     e.preventDefault();
-    const user = { email: userDetails.email, password: userDetails.password };
-    dispatch(registerUser(user));
+    if (validateForm()) {
+      const user = { email: userDetails.email, password: userDetails.password };
+      dispatch(registerUser(user));
+    }
   };
 
   return (
@@ -51,6 +109,9 @@ export default function Register() {
                 onChange={updateUserDetails}
               />
             </label>
+            {errors.email && (
+              <p className="text-red-500 text-sm">{errors.email}</p>
+            )}
             <br />
             <label className="input input-bordered flex items-center gap-2">
               <svg
@@ -70,6 +131,9 @@ export default function Register() {
                 onChange={updateUserDetails}
               />
             </label>
+            {errors.username && (
+              <p className="text-red-500 text-sm">{errors.username}</p>
+            )}
             <br />
             <label className="input input-bordered flex items-center gap-2">
               <svg
@@ -93,6 +157,9 @@ export default function Register() {
                 onChange={updateUserDetails}
               />
             </label>
+            {errors.password && (
+              <p className="text-red-500 text-sm">{errors.password}</p>
+            )}
             <br />
             <label className="input input-bordered flex items-center gap-2">
               <svg
@@ -116,6 +183,9 @@ export default function Register() {
                 onChange={updateUserDetails}
               />
             </label>
+            {errors.confirmPassword && (
+              <p className="text-red-500 text-sm">{errors.confirmPassword}</p>
+            )}
             <br />
             <button className="btn btn-primary btn-block">Register</button>
           </form>
