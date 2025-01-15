@@ -1,23 +1,33 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Status } from "../../types/types";
 import registerUser from "./reducers/registerUserAsyncReducer";
 
 interface UserAuth {
   status: Status;
-  user: { id: string | null; email: string | null };
+  user: User;
   error: string | null;
+}
+
+interface User {
+  _id: string | null;
+  email: string | null;
 }
 
 const initialState: UserAuth = {
   status: Status.initial,
-  user: { id: null, email: null },
+  user: { _id: null, email: null },
   error: null,
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    loadUserFromLocalStorage(state, action: PayloadAction<User>) {
+      state.user = action.payload;
+      state.status = Status.updated;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(registerUser.pending, (state) => {
@@ -36,4 +46,5 @@ const authSlice = createSlice({
   },
 });
 
+export const { loadUserFromLocalStorage } = authSlice.actions;
 export default authSlice.reducer;

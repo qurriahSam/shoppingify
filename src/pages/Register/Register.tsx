@@ -1,7 +1,10 @@
-import { ChangeEvent, SyntheticEvent, useState } from "react";
+import { ChangeEvent, SyntheticEvent, useEffect, useState } from "react";
 import registerUser from "../../store/auth/reducers/registerUserAsyncReducer";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../store/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../store/store";
+import { Status } from "../../types/types";
+import { useNavigate } from "react-router-dom";
+import useLocalStorage from "../../service/localStorageService";
 
 export default function Register() {
   const [userDetails, setUserDetails] = useState({
@@ -18,7 +21,23 @@ export default function Register() {
     confirmPassword: "",
   });
 
+  const { saveUserDetails } = useLocalStorage("user");
+
+  const auth = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+
+  const navToLogin = () => navigate("/login");
+
+  useEffect(() => {
+    if (auth.status === Status.updated && auth.user.email) {
+      saveUserDetails({
+        _id: auth.user._id as string,
+        email: auth.user.email as string,
+      });
+      navigate("/app");
+    }
+  });
 
   const updateUserDetails = (e: ChangeEvent<HTMLInputElement>) => {
     const key = e.target.id;
@@ -32,7 +51,8 @@ export default function Register() {
 
     switch (key) {
       case "email": {
-        const emailRegex = /^[^s@]+@[^s@]+.[^s@]+$/;
+        const emailRegex =
+          /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
         if (!value.trim()) error = "Email is required.";
         else if (!emailRegex.test(value)) error = "Enter a valid email.";
         break;
@@ -74,6 +94,10 @@ export default function Register() {
       !errors.confirmPassword
     );
   };
+
+  const hasErrors =
+    Object.values(errors).some((error) => error !== "") ||
+    Object.values(userDetails).some((value) => value.trim() === "");
 
   const registerNewUser = (e: SyntheticEvent) => {
     e.preventDefault();
@@ -187,12 +211,23 @@ export default function Register() {
               <p className="text-red-500 text-sm">{errors.confirmPassword}</p>
             )}
             <br />
-            <button className="btn btn-primary btn-block">Register</button>
+            <button
+              className="btn btn-primary btn-block"
+              disabled={hasErrors || auth.status === Status.loading}
+            >
+              {auth.status === Status.loading ? (
+                <span className="loading loading-dots loading-sm"></span>
+              ) : (
+                "Register"
+              )}
+            </button>
           </form>
 
           <p className="mt-5">
             Already have an account?
-            <a className="link link-primary">Login</a>
+            <a className="link link-primary" onClick={navToLogin}>
+              Login
+            </a>
           </p>
         </div>
       </div>
