@@ -10,8 +10,20 @@ import PageNotFound from "./pages/pageNotFound/PageNotFound";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
+import useLocalStorage from "./service/localStorageService";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "./store/store";
+import { useEffect } from "react";
+import { loadUserFromLocalStorage } from "./store/auth/authSlice";
 
 function App() {
+  const { userDetails } = useLocalStorage("user");
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    if (userDetails) dispatch(loadUserFromLocalStorage(userDetails));
+  }, [dispatch, userDetails]);
+
   return (
     <Routes>
       <Route path="/app" Component={SiteWrapper}>
