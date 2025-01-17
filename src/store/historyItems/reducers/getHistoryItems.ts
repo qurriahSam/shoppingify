@@ -4,9 +4,9 @@ import axios from 'axios';
 export const getHistoryItems = createAsyncThunk(
   'historyItems/getHistoryItems',
   async (id: string) => {
-    //const URL = process.env.API_URL;
+    const URL = process.env.API_URL;
     try {
-      const response = await axios.post(`https://shoppingify-h8cg.onrender.com/history`, {
+      const response = await axios.post(`${URL}/history_items`, {
         id: id,
       });
       return response.data;

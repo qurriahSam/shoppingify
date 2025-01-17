@@ -6,18 +6,16 @@ const setListToInactive = createAsyncThunk(
   'shoppingList/setListToInactive',
 
   async (shoppingList: ShoppingList) => {
-    //const URL = process.env.API_URL;
+    const URL = process.env.API_URL;
     const sendData = {
       _id: shoppingList._id,
-      title: shoppingList.title,
-      list: shoppingList.list,
-      status: shoppingList.status,
       current: false,
     };
     try {
-      await axios.post(`https://shoppingify-h8cg.onrender.com/updateShopping`, sendData);
+      await axios.post(`${URL}/updateShopping`, sendData);
       return {
         _id: '',
+        userId: '',
         update: Status.initial,
         title: '',
         list: [],

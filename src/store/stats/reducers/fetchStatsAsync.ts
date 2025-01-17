@@ -1,14 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { ShoppingItemCategory, ShoppingList, Status } from '../../../types/types';
+import {
+  ShoppingItemCategory,
+  ShoppingList,
+  Status,
+} from '../../../types/types';
 
 const fetchStats = createAsyncThunk(
   'stats/fetchStats',
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async () => {
-    //const URL = process.env.REACT_APP_API_URL;
+    const URL = process.env.API_URL;
     try {
-      const response = await axios('https://shoppingify-h8cg.onrender.com/stats');
+      const response = await axios(`${URL}/stats`);
       if (response.data === null) {
         return {
           status: Status.initial,
@@ -17,7 +21,10 @@ const fetchStats = createAsyncThunk(
         };
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const cats = response.data.categories.map((cat: any) => ({ ...cat, items: {} }));
+      const cats = response.data.categories.map((cat: any) => ({
+        ...cat,
+        items: {},
+      }));
 
       const months = [
         'Jan',
@@ -69,7 +76,10 @@ const fetchStats = createAsyncThunk(
                     cats[index].items[`${item.name}`] =
                       cats[index].items[`${item.name}`] + item.count;
                   } else {
-                    cats[index].items = { ...cats[index].items, [`${item.name}`]: item.count };
+                    cats[index].items = {
+                      ...cats[index].items,
+                      [`${item.name}`]: item.count,
+                    };
                   }
                 }
               });

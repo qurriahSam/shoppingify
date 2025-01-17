@@ -1,16 +1,14 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ShoppingList, Status } from "../../../types/types";
-import axios from "axios";
-import useLocalStorage from "../../../service/localStorageService";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { ShoppingList, Status } from '../../../types/types';
+import axios from 'axios';
 
 const saveShoppingList = createAsyncThunk(
-  "shoppingList/saveShoppingList",
+  'shoppingList/saveShoppingList',
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async (shoppingList: any): Promise<ShoppingList> => {
-    const URL = process.env.LOCAL_API_URL;
-    const { userDetails } = useLocalStorage("user");
+    const URL = process.env.API_URL;
     const sendData = {
-      userId: userDetails?._id,
+      userId: shoppingList.userId,
       title: shoppingList.title,
       list: shoppingList.list,
       status: shoppingList.status,
