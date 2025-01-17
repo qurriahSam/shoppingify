@@ -73,6 +73,7 @@ export interface ShoppingItemCategory {
 
 export interface ShoppingList {
   _id: string;
+  userId: string;
   update: Status;
   title: string;
   list: ShoppingItemCategory[];
