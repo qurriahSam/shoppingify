@@ -7,6 +7,7 @@ import setListToInactive from './reducers/setListToInactive';
 
 const initialState: ShoppingList = {
   _id: '',
+  userId: '',
   update: Status.initial,
   title: '',
   list: [],
@@ -21,19 +22,30 @@ const shoppingListSlice = createSlice({
   initialState,
   reducers: {
     addItemToList: (state, action: PayloadAction<ShoppingItemCategory>) => {
-      const category = state.list.find((category) => category._id === action.payload._id);
+      const category = state.list.find(
+        (category) => category._id === action.payload._id
+      );
       if (category) {
-        const item = category.items.find((item) => item._id === action.payload.items[0]._id);
+        const item = category.items.find(
+          (item) => item._id === action.payload.items[0]._id
+        );
         if (!item) category.items.push(action.payload.items[0]);
         return state;
       }
       state.list.push(action.payload);
       return state;
     },
-    removeItemFromList: (state, action: PayloadAction<ShoppingItemCategory>) => {
-      const category = state.list.find((category) => category._id === action.payload._id);
+    removeItemFromList: (
+      state,
+      action: PayloadAction<ShoppingItemCategory>
+    ) => {
+      const category = state.list.find(
+        (category) => category._id === action.payload._id
+      );
       if (category) {
-        const item = category.items.find((item) => item._id === action.payload.items[0]._id);
+        const item = category.items.find(
+          (item) => item._id === action.payload.items[0]._id
+        );
         if (item)
           category.items = category.items.filter(
             (item) => item._id !== action.payload.items[0]._id
@@ -43,26 +55,41 @@ const shoppingListSlice = createSlice({
       state.list.push(action.payload);
       return state;
     },
-    checkoutItemFromList: (state, action: PayloadAction<ShoppingItemCategory>) => {
-      const category = state.list.find((category) => category._id === action.payload._id);
+    checkoutItemFromList: (
+      state,
+      action: PayloadAction<ShoppingItemCategory>
+    ) => {
+      const category = state.list.find(
+        (category) => category._id === action.payload._id
+      );
       if (category) {
-        const item = category.items.find((item) => item._id === action.payload.items[0]._id);
+        const item = category.items.find(
+          (item) => item._id === action.payload.items[0]._id
+        );
         if (item) item.complete = !item.complete;
       }
       return state;
     },
     increaseItemCount: (state, action: PayloadAction<ShoppingItemCategory>) => {
-      const category = state.list.find((category) => category._id === action.payload._id);
+      const category = state.list.find(
+        (category) => category._id === action.payload._id
+      );
       if (category) {
-        const item = category.items.find((item) => item._id === action.payload.items[0]._id);
+        const item = category.items.find(
+          (item) => item._id === action.payload.items[0]._id
+        );
         if (item) item.count = ++item.count;
       }
       return state;
     },
     decreaseItemCount: (state, action: PayloadAction<ShoppingItemCategory>) => {
-      const category = state.list.find((category) => category._id === action.payload._id);
+      const category = state.list.find(
+        (category) => category._id === action.payload._id
+      );
       if (category) {
-        const item = category.items.find((item) => item._id === action.payload.items[0]._id);
+        const item = category.items.find(
+          (item) => item._id === action.payload.items[0]._id
+        );
         if (item && item.count > 1) item.count = --item.count;
       }
       return state;
@@ -77,24 +104,36 @@ const shoppingListSlice = createSlice({
       .addCase(saveShoppingList.pending, (state) => {
         return (state = { ...state, update: Status.loading });
       })
-      .addCase(saveShoppingList.fulfilled, (state, action: PayloadAction<ShoppingList>) => {
-        return (state = action.payload);
-      })
+      .addCase(
+        saveShoppingList.fulfilled,
+        (state, action: PayloadAction<ShoppingList>) => {
+          return (state = action.payload);
+        }
+      )
       .addCase(saveShoppingList.rejected, (state) => {
         return (state = { ...state, update: Status.failed });
       })
-      .addCase(getActiveShoppingList.fulfilled, (state, action: PayloadAction<ShoppingList>) => {
-        return (state = { ...action.payload, update: Status.updated });
-      })
+      .addCase(
+        getActiveShoppingList.fulfilled,
+        (state, action: PayloadAction<ShoppingList>) => {
+          return (state = { ...action.payload, update: Status.updated });
+        }
+      )
       .addCase(updateShoppingList.pending, (state) => {
         return (state = { ...state, update: Status.loading });
       })
-      .addCase(updateShoppingList.fulfilled, (state, action: PayloadAction<ShoppingList>) => {
-        return (state = action.payload);
-      })
-      .addCase(setListToInactive.fulfilled, (state, action: PayloadAction<ShoppingList>) => {
-        return (state = action.payload);
-      });
+      .addCase(
+        updateShoppingList.fulfilled,
+        (state, action: PayloadAction<ShoppingList>) => {
+          return (state = action.payload);
+        }
+      )
+      .addCase(
+        setListToInactive.fulfilled,
+        (state, action: PayloadAction<ShoppingList>) => {
+          return action.payload;
+        }
+      );
   },
 });
 
