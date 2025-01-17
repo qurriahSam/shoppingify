@@ -18,7 +18,9 @@ function ListHistorySkeleton() {
 
         <div className='skeleton h-4 w-28'></div>
 
-        <i className='material-symbols-outlined text-neutral-200 font-sm'>chevron_right</i>
+        <i className='material-symbols-outlined text-neutral-200 font-sm'>
+          chevron_right
+        </i>
       </div>
     </div>
   );
@@ -53,7 +55,9 @@ function ListHistory({ history }: { history: HistoryListTitle }) {
           </div>
         )}
 
-        <i className='material-symbols-outlined text-neutral-600 font-sm'>chevron_right</i>
+        <i className='material-symbols-outlined text-neutral-600 font-sm'>
+          chevron_right
+        </i>
       </div>
     </button>
   );
@@ -61,17 +65,20 @@ function ListHistory({ history }: { history: HistoryListTitle }) {
 
 export default function History() {
   const listHistory = useSelector((state: RootState) => state.history);
+  const user = useSelector((state: RootState) => state.auth.user);
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     if (listHistory.status === Status.initial) {
-      dispatch(getHistory());
+      if (user._id) dispatch(getHistory(user._id));
     }
-  });
+  }, [dispatch, listHistory.status, user]);
 
   return (
     <div>
-      <p className='mb-4 text-lg md:mb-0 md:text-2xl font-medium max-w-md'>History</p>
+      <p className='mb-4 text-lg md:mb-0 md:text-2xl font-medium max-w-md'>
+        History
+      </p>
 
       {listHistory.status === Status.initial
         ? [1, 2, 3, 4, 5, 6, 7].map((num) => <ListHistorySkeleton key={num} />)
