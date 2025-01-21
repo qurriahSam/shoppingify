@@ -1,6 +1,7 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Status } from "../../types/types";
-import registerUser from "./reducers/registerUserAsyncReducer";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Status } from '../../types/types';
+import registerUser from './reducers/registerUserAsyncReducer';
+import loginUser from './reducers/loginUserAsyncReducer';
 
 interface UserAuth {
   status: Status;
@@ -20,7 +21,7 @@ const initialState: UserAuth = {
 };
 
 const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
   reducers: {
     loadUserFromLocalStorage(state, action: PayloadAction<User>) {
@@ -37,14 +38,26 @@ const authSlice = createSlice({
       .addCase(registerUser.pending, (state) => {
         return (state = { ...state, status: Status.loading });
       })
-      .addCase(registerUser.fulfilled, (state, action) => {
+      .addCase(registerUser.fulfilled, (state) => {
+        return (state = {
+          ...state,
+          status: Status.updated,
+        });
+      })
+      .addCase(registerUser.rejected, (state) => {
+        return (state = { ...state, status: Status.failed });
+      })
+      .addCase(loginUser.pending, (state) => {
+        return (state = { ...state, status: Status.loading });
+      })
+      .addCase(loginUser.fulfilled, (state, action: PayloadAction<User>) => {
         return (state = {
           ...state,
           status: Status.updated,
           user: action.payload,
         });
       })
-      .addCase(registerUser.rejected, (state) => {
+      .addCase(loginUser.rejected, (state) => {
         return (state = { ...state, status: Status.failed });
       });
   },
