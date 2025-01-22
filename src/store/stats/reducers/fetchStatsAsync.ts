@@ -10,9 +10,11 @@ const fetchStats = createAsyncThunk(
   'stats/fetchStats',
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async () => {
-    const URL = process.env.REACT_APP_URL;
+    //const URL = process.env.REACT_APP_URL;
     try {
-      const response = await axios(`${URL}/stats`);
+      const response = await axios(
+        'https://shoppingify-h8cg.onrender.com/stats'
+      );
       if (response.data === null) {
         return {
           status: Status.initial,

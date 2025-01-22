@@ -4,9 +4,11 @@ import axios from 'axios';
 const fetchCategories = createAsyncThunk(
   'category/fetchCategories',
   async () => {
-    const URL = process.env.REACT_APP_URL;
+    //const URL = process.env.REACT_APP_URL;
     try {
-      const response = await axios.get(`${URL}/`);
+      const response = await axios.get(
+        'https://shoppingify-h8cg.onrender.com/'
+      );
       return response.data;
     } catch (error) {
       console.error(error);

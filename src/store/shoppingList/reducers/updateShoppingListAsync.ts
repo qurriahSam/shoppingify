@@ -6,7 +6,7 @@ const updateShoppingList = createAsyncThunk(
   'shoppingList/updateShoppingList',
 
   async (shoppingList: ShoppingList) => {
-    const URL = process.env.REACT_APP_URL;
+    //const URL = process.env.REACT_APP_URL;
     const sendData = {
       _id: shoppingList._id,
       title: shoppingList.title,
@@ -15,7 +15,10 @@ const updateShoppingList = createAsyncThunk(
       current: shoppingList.current,
     };
     try {
-      const response = await axios.post(`${URL}/updateShopping`, sendData);
+      const response = await axios.post(
+        'https://shoppingify-h8cg.onrender.com/updateShopping',
+        sendData
+      );
       if (response.data.current === false)
         return {
           _id: '',

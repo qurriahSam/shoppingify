@@ -14,10 +14,13 @@ interface User {
 const loginUser = createAsyncThunk(
   'auth/loginUser',
   async (user: INewUser): Promise<User> => {
-    const URL = process.env.REACT_APP_URL;
+    //const URL = process.env.REACT_APP_URL;
 
     try {
-      const response = await axios.post(`${URL}/login`, user);
+      const response = await axios.post(
+        'https://shoppingify-h8cg.onrender.com/login',
+        user
+      );
       console.log(response);
       return {
         _id: response.data.data.userId as string,
