@@ -6,7 +6,7 @@ const updateShoppingList = createAsyncThunk(
   'shoppingList/updateShoppingList',
 
   async (shoppingList: ShoppingList) => {
-    const URL = process.env.API_URL;
+    const URL = process.env.REACT_APP_URL;
     const sendData = {
       _id: shoppingList._id,
       title: shoppingList.title,

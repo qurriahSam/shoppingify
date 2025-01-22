@@ -4,7 +4,7 @@ import axios from 'axios';
 export const getHistoryItems = createAsyncThunk(
   'historyItems/getHistoryItems',
   async (id: string) => {
-    const URL = process.env.API_URL;
+    const URL = process.env.REACT_APP_URL;
     try {
       const response = await axios.post(`${URL}/history_items`, {
         id: id,

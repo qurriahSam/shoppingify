@@ -9,7 +9,7 @@ interface INewUser {
 const registerUser = createAsyncThunk(
   'auth/registerUser',
   async (user: INewUser) => {
-    const URL = process.env.API_URL;
+    const URL = process.env.REACT_APP_URL;
 
     try {
       const response = await axios.post(`${URL}/register`, user);

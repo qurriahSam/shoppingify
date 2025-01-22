@@ -1,10 +1,10 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 const getHistory = createAsyncThunk(
-  "history/getHistory",
+  'history/getHistory',
   async (userId: string) => {
-    const URL = process.env.API_URL;
+    const URL = process.env.REACT_APP_URL;
     try {
       const response = await axios.post(`${URL}/history`, { _id: userId });
       return response.data;

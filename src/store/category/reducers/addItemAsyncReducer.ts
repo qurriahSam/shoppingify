@@ -21,7 +21,7 @@ const addItem = createAsyncThunk('category/addItem', async (item: INewItem) => {
   };
 
   try {
-    const URL = process.env.API_URL;
+    const URL = process.env.REACT_APP_URL;
     const response = await axios.post(`${URL}`, sendData);
     return response.data;
   } catch (error) {

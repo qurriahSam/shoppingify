@@ -10,7 +10,7 @@ const fetchStats = createAsyncThunk(
   'stats/fetchStats',
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async () => {
-    const URL = process.env.API_URL;
+    const URL = process.env.REACT_APP_URL;
     try {
       const response = await axios(`${URL}/stats`);
       if (response.data === null) {
