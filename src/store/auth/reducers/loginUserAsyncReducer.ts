@@ -6,19 +6,31 @@ interface INewUser {
   password: string;
 }
 
-const loginUser = createAsyncThunk('auth/loginUser', async (user: INewUser) => {
-  const URL = process.env.API_URL;
+interface User {
+  _id: string | null;
+  email: string | null;
+}
 
-  try {
-    const response = await axios.post(`${URL}/login`, user);
-    console.log(response);
-    return {
-      _id: response.data.data.userId as string,
-      email: response.data.data.email as string,
-    };
-  } catch (error) {
-    console.error(error);
+const loginUser = createAsyncThunk(
+  'auth/loginUser',
+  async (user: INewUser): Promise<User> => {
+    const URL = process.env.API_URL;
+
+    try {
+      const response = await axios.post(`${URL}/login`, user);
+      console.log(response);
+      return {
+        _id: response.data.data.userId as string,
+        email: response.data.data.email as string,
+      };
+    } catch (error) {
+      console.error(error);
+      return {
+        _id: null,
+        email: null,
+      };
+    }
   }
-});
+);
 
 export default loginUser;
