@@ -62,12 +62,6 @@ function Header() {
       </div>
       <div className='navbar-end'>
         <button
-          className='btn btn-link btn-sm'
-          onClick={() => navigate('/app')}
-        >
-          Go To App
-        </button>
-        <button
           className='btn btn-primary btn-sm'
           onClick={() => navigate('/login')}
         >
