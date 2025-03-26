@@ -14,7 +14,7 @@ interface User {
 const loginUser = createAsyncThunk(
   'auth/loginUser',
   async (user: INewUser): Promise<User> => {
-    const URL = process.env.REACT_APP_URL;
+    const URL = import.meta.env.VITE_URL as string;
 
     try {
       const response = await axios.post(`${URL}/login`, user);

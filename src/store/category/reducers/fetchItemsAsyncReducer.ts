@@ -4,7 +4,7 @@ import axios from 'axios';
 const fetchCategories = createAsyncThunk(
   'category/fetchCategories',
   async () => {
-    const URL = process.env.REACT_APP_URL;
+    const URL = import.meta.env.VITE_URL as string;
     try {
       const response = await axios.get(`${URL}`);
       return response.data;
