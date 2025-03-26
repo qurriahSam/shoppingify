@@ -21,11 +21,8 @@ const addItem = createAsyncThunk('category/addItem', async (item: INewItem) => {
   };
 
   try {
-    //const URL = process.env.REACT_APP_URL;
-    const response = await axios.post(
-      'https://shoppingify-h8cg.onrender.com/',
-      sendData
-    );
+    const URL = import.meta.env.VITE_URL as string;
+    const response = await axios.post(`${URL}`, sendData);
     return response.data;
   } catch (error) {
     console.error(error);
