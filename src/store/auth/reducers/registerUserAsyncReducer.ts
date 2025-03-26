@@ -9,13 +9,10 @@ interface INewUser {
 const registerUser = createAsyncThunk(
   'auth/registerUser',
   async (user: INewUser) => {
-    //const URL = process.env.REACT_APP_URL;
+    const URL = process.env.REACT_APP_URL;
 
     try {
-      const response = await axios.post(
-        'https://shoppingify-h8cg.onrender.com/register',
-        user
-      );
+      const response = await axios.post(`${URL}/register`, user);
       console.log(response);
       return response.data;
     } catch (error) {
